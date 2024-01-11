@@ -21,6 +21,7 @@ public class ClienteDAOImpl implements  ClienteDAO{
 
     @Override
     public List<Cliente> getAll(){
+        /*FALLO > No reconoce id en la query*/
         List<Cliente> listaCli = jdbcTemplate.query("SELECT * FROM cliente", (rs, rowNum) -> new Cliente(rs.getInt("id"), rs.getString("nombre")
                 , rs.getString("apellido1"), rs.getString("apellido2")
                 , rs.getString("ciudad"), rs.getInt("categoria")));
