@@ -53,7 +53,7 @@ public class ClienteDAOImpl implements  ClienteDAO{
     }
 
     @Override
-    public void delente (int id){
+    public void delete(int id){
         int rows = jdbcTemplate.update("DELETE FROM cliente WHERE id = ?", id);
 
         String consola = rows > 0 ? "Delete de cliente con " + rows + " registros actualizados" : "No se han realizado deletes de cliente";

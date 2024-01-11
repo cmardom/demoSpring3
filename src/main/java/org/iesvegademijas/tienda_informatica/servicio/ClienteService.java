@@ -38,7 +38,7 @@ public class ClienteService {
     }
 
     public void deletecliente(int id){
-        clienteDAO.delente(id);
+        clienteDAO.delete(id);
     }
 
 }

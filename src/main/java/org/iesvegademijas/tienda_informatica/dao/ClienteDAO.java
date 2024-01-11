@@ -9,6 +9,6 @@ public interface ClienteDAO {
     public List<Cliente> getAll();
     public Optional<Cliente> find(int id);
     public void update (Cliente cliente);
-    public void delente (int id);
+    public void delete(int id);
 
 }

@@ -24,7 +24,6 @@ public class ClienteController {
     public String listarClientes (Model model){
         List<Cliente> listAllCli = clienteService.listAll();
         model.addAttribute("listaClientes", listAllCli);
-
         return "clientes";
     }
 
@@ -35,6 +34,8 @@ public class ClienteController {
         return "detalle-cliente";
 
     }
+
+    /*no deberia ser igual el return que el getMapping?*/
 
     @GetMapping("/clientes/crear")
     public String crear(Model model){
