@@ -2,16 +2,16 @@ package org.iesvegademijas.tienda_informatica.modelo;
 
 public class Fabricante {
 
-	private int codigo;
+	private int id;
 	private String nombre;
 	
 	public Fabricante() {
 		
 	}
 	
-	public Fabricante(int codigo, String nombre) {
+	public Fabricante(int id, String nombre) {
 		super();
-		this.codigo = codigo;
+		this.id = id;
 		this.nombre = nombre;
 	}
 
@@ -24,16 +24,16 @@ public class Fabricante {
 	}
 
 	public int getCodigo() {
-		return codigo;
+		return id;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public void setCodigo(int id) {
+		this.id = id;
 	}
 
 	@Override
 	public String toString() {
-		return "Fabricante [codigo=" + codigo + ", nombre=" + nombre + "]";
+		return "Fabricante [id=" + id + ", nombre=" + nombre + "]";
 	}
 	
 	

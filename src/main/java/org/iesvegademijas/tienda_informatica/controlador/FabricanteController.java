@@ -53,6 +53,7 @@ public class FabricanteController {
 		return "crear-fabricante";
 		
 	}
+	/*No encuentra crear fabricante*/
 	
 	@PostMapping("/fabricantes/crear")
 	public RedirectView submitCrear(@ModelAttribute("fabricante") Fabricante fabricante) {

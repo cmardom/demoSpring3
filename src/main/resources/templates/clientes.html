@@ -1,0 +1,68 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Clientes</title>
+</head>
+<body>
+<body>
+
+<div id="contenedora">
+    <div>
+        <div>
+            <h1>Clientes</h1>
+        </div>
+        <div>
+
+            <div>
+
+                <form action="/clientes/crear">
+                    <input type="submit" value="Crear">
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div>
+        <hr/>
+    </div>
+    <div>
+        <div>Código</div>
+        <div>Nombre</div>
+        <div>Apellido 1</div>
+        <div>Apellido 2</div>
+        <div>Ciudad</div>
+        <div>Categoria</div>
+
+
+        <div>Acción</div>
+    </div>
+    <div>
+        <hr/>
+    </div>
+
+    <div  th:each="cliente : ${listaClientes}">
+        <div th:text="${cliente.id}">Código</div>
+        <div th:text="${cliente.nombre}">Nombre</div>
+        <div th:text="${cliente.apellido1}">Apellido 1</div>
+        <div th:text="${cliente.apellido2}">Apellido 2</div>
+        <div th:text="${cliente.ciudad}">Ciudad</div>
+        <div th:text="${cliente.categoria}">Categoria</div>
+
+
+        <div>
+            <form th:action="@{/clientes/__${cliente.id}__}">
+                <input type="submit" value="Ver Detalle" />
+            </form>
+            <form th:action="@{'/clientes/editar/'+${cliente.id}} ">
+                <input type="submit" value="Editar" />
+            </form>
+            <form th:action="@{'/clientes/borrar/'+${cliente.id}}" method="post">
+                <input type="submit" value="Eliminar" />
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</body>
+</html>

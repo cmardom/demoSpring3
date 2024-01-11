@@ -50,10 +50,10 @@
 				<form th:action="@{/fabricantes/__${fabricante.codigo}__}" style="display: inline;">
     				<input type="submit" value="Ver Detalle" />
 				</form>
-				<form th:action="@{/fabricantes/editar/}+${fabricante.codigo} " style="display: inline;">
+				<form th:action="@{'/fabricantes/editar/'+${fabricante.codigo}} " style="display: inline;">
     				<input type="submit" value="Editar" />
 				</form>
-				<form th:action="@{/fabricantes/borrar/__${fabricante.codigo}__}" method="post" style="display: inline;">					
+				<form th:action="@{'/fabricantes/borrar/'+${fabricante.codigo}}" method="post" style="display: inline;">
     				<input type="submit" value="Eliminar" />
 				</form>
 			</div>
