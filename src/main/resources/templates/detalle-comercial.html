@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Detalle Cliente</title>
+    <title>Detalle Comercial</title>
 
 </head>
 <body>
@@ -10,13 +10,13 @@
 <div id="contenedora" >
     <div>
         <div>
-            <h1>Detalle Cliente</h1>
+            <h1>Detalle Comercial</h1>
         </div>
         <div>
 
             <div>
 
-                <form action="/clientes" >
+                <form action="/comerciales" >
                     <input type="submit" value="Volver" />
                 </form>
             </div>
@@ -33,7 +33,7 @@
             <label>ID</label>
         </div>
         <div>
-            <p th:text="${cliente.id}"/>
+            <p th:text="${comercial.id}"/>
         </div>
     </div>
 
@@ -42,7 +42,7 @@
             <label>Nombre</label>
         </div>
         <div>
-            <p th:text="${cliente.nombre}"/>
+            <p th:text="${comercial.nombre}"/>
         </div>
     </div>
 
@@ -51,7 +51,7 @@
             <label>Apellido 1</label>
         </div>
         <div>
-            <p th:text="${cliente.apellido1}"/>
+            <p th:text="${comercial.apellido1}"/>
         </div>
     </div>
 
@@ -60,29 +60,19 @@
             <label>Apellido 2</label>
         </div>
         <div>
-            <p th:text="${cliente.apellido2}"/>
+            <p th:text="${comercial.apellido2}"/>
         </div>
     </div>
 
     <div>
         <div>
-            <label>Ciudad</label>
+            <label>Comisión</label>
         </div>
         <div>
-            <p th:text="${cliente.ciudad}"/>
+            <p th:text="${comercial.comision}"/>
         </div>
     </div>
 
-    <div>
-        <div>
-            <label>Categoría</label>
-        </div>
-        <div>
-            <p th:text="${cliente.categoria}"/>
-        </div>
-    </div>
-
-<!-- AÑADIR RESTO DE CAMPOS DE CLIENTE -->
 </div>
 
 </body>
