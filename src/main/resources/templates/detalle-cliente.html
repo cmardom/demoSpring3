@@ -1,0 +1,53 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle Cliente</title>
+
+</head>
+<body>
+
+<div id="contenedora" >
+    <div>
+        <div>
+            <h1>Detalle Cliente</h1>
+        </div>
+        <div>
+
+            <div>
+
+                <form action="/clientes" >
+                    <input type="submit" value="Volver" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+        <hr/>
+    </div>
+
+    <div>
+        <div>
+            <label>ID</label>
+        </div>
+        <div>
+            <p th:text="${cliente.id}"/>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <label>Nombre</label>
+        </div>
+        <div>
+            <p th:text="${cliente.nombre}"/>
+        </div>
+    </div>
+
+<!-- AÑADIR RESTO DE CAMPOS DE CLIENTE -->
+</div>
+
+</body>
+</html>
