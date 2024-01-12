@@ -1,0 +1,59 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear comercial</title>
+
+</head>
+<body>
+
+<div id="contenedora">
+    <form th:action="@{/comerciales/crear/}" th:object="${comercial}" method="post">
+        <div >
+            <div>
+                <h1>Crear comercial</h1>
+            </div>
+            <div>
+
+                <div>
+                    <input type="submit" value="Crear"/>
+                </div>
+
+            </div>
+        </div>
+
+        <div>
+        </div>
+
+        <div>
+            <div>
+                Nombre
+            </div>
+            <div>
+                <input th:field="*{nombre}" />
+            </div>
+            <div>
+                Apellido 1
+            </div>
+            <div>
+                <input th:field="*{apellido1}" />
+            </div>
+            <div>
+                Apellido 2
+            </div>
+            <div>
+                <input th:field="*{apellido2}" />
+            </div>
+            <div>
+                Comisión
+            </div>
+            <div>
+                <input th:field="*{comision}" />
+            </div>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
