@@ -43,7 +43,7 @@ public class ComercialController {
     public String editar(Model model, @PathVariable Integer id){
         Comercial comercial = comercialService.one(id);
         model.addAttribute("comercial", comercial);
-        return "editar-cliente";
+        return "editar-comercial";
     }
 
     @PostMapping("/comerciales/editar{id}")
