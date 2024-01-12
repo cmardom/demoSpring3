@@ -23,8 +23,9 @@ public class FabricanteController {
 
 	@Autowired
 	private FabricanteService fabricanteService;
-	
-	@GetMapping("/fabricantes")
+
+	//ARRAY DE ANOTACIONES PARA LOCALIZACIÓN
+	@GetMapping({"/fabricantes", "/suppliers"})
 	public String listar(Model model) {
 		
 		List<Fabricante> listAllFab =  fabricanteService.listAll();

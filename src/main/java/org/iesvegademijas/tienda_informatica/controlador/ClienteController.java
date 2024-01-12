@@ -1,7 +1,6 @@
 package org.iesvegademijas.tienda_informatica.controlador;
 
 import org.iesvegademijas.tienda_informatica.modelo.Cliente;
-import org.iesvegademijas.tienda_informatica.modelo.Fabricante;
 import org.iesvegademijas.tienda_informatica.servicio.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,7 +34,6 @@ public class ClienteController {
 
     }
 
-    /*no deberia ser igual el return que el getMapping?*/
 
     @GetMapping("/clientes/crear")
     public String crear(Model model){

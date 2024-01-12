@@ -1,0 +1,65 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear cliente</title>
+
+</head>
+<body>
+
+<div id="contenedora">
+    <form th:action="@{/clientes/crear/}" th:object="${cliente}" method="post">
+        <div >
+            <div>
+                <h1>Crear cliente</h1>
+            </div>
+            <div>
+
+                <div>
+                    <input type="submit" value="Crear"/>
+                </div>
+
+            </div>
+        </div>
+
+        <div>
+        </div>
+
+        <div>
+            <div>
+                Nombre
+            </div>
+            <div>
+                <input th:field="*{nombre}" />
+            </div>
+            <div>
+                Apellido 1
+            </div>
+            <div>
+                <input th:field="*{apellido1}" />
+            </div>
+            <div>
+                Apellido 2
+            </div>
+            <div>
+                <input th:field="*{apellido2}" />
+            </div>
+            <div>
+                Ciudad
+            </div>
+            <div>
+                <input th:field="*{ciudad}" />
+            </div>
+            <div>
+                Categoría
+            </div>
+            <div>
+                <input th:field="*{categoria}" />
+            </div>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
