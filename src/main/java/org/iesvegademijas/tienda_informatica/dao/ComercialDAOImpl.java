@@ -33,7 +33,8 @@ public class ComercialDAOImpl implements ComercialDAO{
         Comercial com = jdbcTemplate.queryForObject("SELECT * FROM comercial WHERE id = ?"
                         , (rs, rowNum) -> new Comercial(rs.getInt("id"), rs.getString("nombre")
                         , rs.getString("apellido1"), rs.getString("apellido2")
-                        , rs.getFloat("comision")));
+                        , rs.getFloat("comision"))
+                ,id);
         if (com != null) return Optional.of(com);
         else return Optional.empty();
     }

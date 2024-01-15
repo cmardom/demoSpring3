@@ -3,60 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Comerciales</title>
-    <link rel="stylesheet" type="text/css" href="/styles/build/stylesheets/styles.css"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}">
+<!--
+    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+-->
+
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
 </head>
-<body>
 <body>
 
 <div id="contenedora">
-    <div>
+    <div class="header">
         <div>
             <h1>Comerciales</h1>
         </div>
         <div>
 
-            <div>
+            <div class="list-group-item d-flex justify-content-between align-items-start">
 
                 <form action="/comerciales/crear">
-                    <input type="submit" value="Crear">
+                    <input class="botonCrear btn btn-light" type="submit" value="Crear nuevo comercial">
                 </form>
             </div>
 
         </div>
     </div>
 
-    <div>
-        <div>Código</div>
-        <div>Nombre</div>
-        <div>Apellido 1</div>
-        <div>Apellido 2</div>
-        <div>Comision</div>
+    <div class="theader list-group-item d-flex justify-content-between align-items-start">
+        <div class="list-group-items fw-bold">Código</div>
+        <div class="list-group-items fw-bold">Nombre</div>
+        <div class="list-group-items fw-bold">Apellido 1</div>
+        <div class="list-group-items fw-bold">Apellido 2</div>
+        <div class="list-group-items fw-bold">Comision</div>
 
-        <div>Acción</div>
+        <div class="list-group-items fw-bold">Acción</div>
     </div>
 
 
-    <div  th:each="comercial : ${listaComerciales}">
-        <div th:text="${comercial.id}">Código</div>
-        <div th:text="${comercial.nombre}">Nombre</div>
-        <div th:text="${comercial.apellido1}">Apellido 1</div>
-        <div th:text="${comercial.apellido2}">Apellido 2</div>
-        <div th:text="${comercial.comision}">Comision</div>
+    <div class="bodyTable list-group-item d-flex justify-content-between align-items-start" th:each="comercial : ${listaComerciales}">
+        <div class="list-group-items fw-bold" th:text="${comercial.id}">Código</div>
+        <div class="list-group-items" th:text="${comercial.nombre}">Nombre</div>
+        <div class="list-group-items" th:text="${comercial.apellido1}">Apellido 1</div>
+        <div class="list-group-items" th:text="${comercial.apellido2}">Apellido 2</div>
+        <div class="list-group-items" th:text="${comercial.comision}">Comision</div>
 
 
         <div>
             <form th:action="@{/comerciales/__${comercial.id}__}">
-                <input type="submit" value="Ver Detalle" />
+                <input class="btn btn-light" type="submit" value="Ver Detalle" />
             </form>
             <form th:action="@{'/comerciales/editar/'+${comercial.id}} ">
-                <input type="submit" value="Editar" />
+                <input class="btn btn-primary" type="submit" value="Editar" />
             </form>
             <form th:action="@{'/comerciales/borrar/'+${comercial.id}}" method="post">
-                <input type="submit" value="Eliminar" />
+                <input class="btn btn-danger" type="submit" value="Eliminar" />
             </form>
         </div>
     </div>
 </div>
-</body>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

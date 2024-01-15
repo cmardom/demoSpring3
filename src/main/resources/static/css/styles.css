@@ -1,0 +1,37 @@
+body {
+  background: linear-gradient(45deg, #49a09d, #5f2c82);
+  font-family: sans-serif;
+  font-weight: 100;
+  color: white;
+}
+body #contenedora {
+  border: 1px solid black;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+body #contenedora .header {
+  border-bottom: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  padding: 2% 0 2% 0;
+  background-color: #55608f;
+}
+body #contenedora .header .botonCrear {
+  margin-top: 5%;
+}
+body #contenedora .theader {
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+body #contenedora .bodyTable {
+  text-indent: 25px;
+}
+body #contenedora .bodyTable:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+body #contenedora .bodyTable div {
+  text-align: center;
+}
+
+/*# sourceMappingURL=styles.css.map */
