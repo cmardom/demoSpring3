@@ -3,77 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalle Comercial</title>
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}">
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
 
 </head>
 <body>
 
-<div id="contenedora" >
-    <div>
-        <div>
-            <h1>Detalle Comercial</h1>
-        </div>
-        <div>
-
-            <div>
-
-                <form action="/comerciales" >
-                    <input type="submit" value="Volver" />
-                </form>
-            </div>
-
-        </div>
+<div id="contenedora">
+    <div class="header">
+        <h1>Detalle Comercial</h1>
     </div>
 
-    <div>
-        <hr/>
+    <div class="theader">
+        <div class="list-group-items fw-bold">Código</div>
+        <div class="list-group-items fw-bold">Nombre</div>
+        <div class="list-group-items fw-bold">Apellido 1</div>
+        <div class="list-group-items fw-bold">Apellido 2</div>
+        <div class="list-group-items fw-bold">Comision</div>
     </div>
 
-    <div>
-        <div>
-            <label>ID</label>
-        </div>
-        <div>
-            <p th:text="${comercial.id}"/>
-        </div>
+    <div class="bodyTable">
+        <div class="list-group-items fw-bold" th:text="${comercial.id}"></div>
+        <div class="list-group-items" th:text="${comercial.nombre}"></div>
+        <div class="list-group-items" th:text="${comercial.apellido1}"></div>
+        <div class="list-group-items" th:text="${comercial.apellido2}"></div>
+        <div class="list-group-items" th:text="${comercial.comision}"></div>
+
     </div>
 
-    <div>
-        <div>
-            <label>Nombre</label>
-        </div>
-        <div>
-            <p th:text="${comercial.nombre}"/>
-        </div>
-    </div>
+    <div class="return">
 
-    <div>
-        <div>
-            <label>Apellido 1</label>
-        </div>
-        <div>
-            <p th:text="${comercial.apellido1}"/>
-        </div>
-    </div>
-
-    <div>
-        <div>
-            <label>Apellido 2</label>
-        </div>
-        <div>
-            <p th:text="${comercial.apellido2}"/>
-        </div>
-    </div>
-
-    <div>
-        <div>
-            <label>Comisión</label>
-        </div>
-        <div>
-            <p th:text="${comercial.comision}"/>
-        </div>
+        <form action="/comerciales" >
+            <input class="btn btn-light" type="submit" value="Volver a listado" />
+        </form>
     </div>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

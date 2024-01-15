@@ -15,33 +15,23 @@
 
 <div id="contenedora">
     <div class="header">
-        <div>
-            <h1>Comerciales</h1>
-        </div>
-        <div>
-
-            <div class="list-group-item d-flex justify-content-between align-items-start">
-
-                <form action="/comerciales/crear">
-                    <input class="botonCrear btn btn-light" type="submit" value="Crear nuevo comercial">
-                </form>
-            </div>
-
-        </div>
+        <h1>Comerciales</h1>
+            <form action="/comerciales/crear">
+                <input class="botonCrear btn btn-light" type="submit" value="Crear nuevo comercial">
+            </form>
     </div>
 
-    <div class="theader list-group-item d-flex justify-content-between align-items-start">
+    <div class="theader">
         <div class="list-group-items fw-bold">Código</div>
         <div class="list-group-items fw-bold">Nombre</div>
         <div class="list-group-items fw-bold">Apellido 1</div>
         <div class="list-group-items fw-bold">Apellido 2</div>
         <div class="list-group-items fw-bold">Comision</div>
-
         <div class="list-group-items fw-bold">Acción</div>
     </div>
 
 
-    <div class="bodyTable list-group-item d-flex justify-content-between align-items-start" th:each="comercial : ${listaComerciales}">
+    <div class="bodyTable" th:each="comercial : ${listaComerciales}">
         <div class="list-group-items fw-bold" th:text="${comercial.id}">Código</div>
         <div class="list-group-items" th:text="${comercial.nombre}">Nombre</div>
         <div class="list-group-items" th:text="${comercial.apellido1}">Apellido 1</div>
@@ -49,9 +39,9 @@
         <div class="list-group-items" th:text="${comercial.comision}">Comision</div>
 
 
-        <div>
+        <div class="buttons btn-group">
             <form th:action="@{/comerciales/__${comercial.id}__}">
-                <input class="btn btn-light" type="submit" value="Ver Detalle" />
+                <input class="btn btn-light" type="submit" value="Detalles" />
             </form>
             <form th:action="@{'/comerciales/editar/'+${comercial.id}} ">
                 <input class="btn btn-primary" type="submit" value="Editar" />
@@ -60,6 +50,12 @@
                 <input class="btn btn-danger" type="submit" value="Eliminar" />
             </form>
         </div>
+    </div>
+
+    <div class="return">
+        <form th:action="@{/}">
+            <input class="btn btn-light" type="submit" value="Volver a inicio" />
+        </form>
     </div>
 </div>
 <!-- Bootstrap JS -->

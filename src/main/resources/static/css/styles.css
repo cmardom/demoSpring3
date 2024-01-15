@@ -1,39 +1,55 @@
-html body {
-  background: linear-gradient(45deg, #49a09d, #5f2c82);
+body {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(121, 9, 121) 35%, rgb(0, 212, 255) 100%);
   font-family: sans-serif;
   font-weight: 100;
   color: white;
 }
-html body #contenedora {
-  border: 1px solid black;
+body #contenedora {
   margin: 0 auto;
-  max-width: 1100px;
+  width: 1200px;
 }
-html body #contenedora .header {
+body #contenedora .header {
   border-bottom: 1px solid black;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
   padding: 2% 0 2% 0;
-  background-color: #55608f;
+  background: #55608f;
+  background: radial-gradient(circle, rgb(19, 52, 224) 0%, rgb(121, 9, 121) 100%);
 }
-html body #contenedora .header .botonCrear {
+body #contenedora .header .botonCrear {
   margin-top: 5%;
   font-size: smaller;
-  background-color: navajowhite;
 }
-html body #contenedora .theader {
-  border-bottom: 1px solid black;
-  text-align: center;
+body #contenedora .theader {
+  padding-top: 10px;
+  border-bottom: 1px solid white;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  justify-items: center;
 }
-html body #contenedora .bodyTable {
-  text-indent: 25px;
+body #contenedora .bodyTable {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  justify-items: center;
 }
-html body #contenedora .bodyTable:hover {
+body #contenedora .bodyTable:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
-html body #contenedora .bodyTable div {
-  text-align: center;
+body #contenedora .bodyTable .buttons {
+  margin-right: 30px;
+}
+body #contenedora .bodyTable .buttons form input {
+  font-size: 10pt;
+}
+body #contenedora .return {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+  border-top: 1px solid white;
+  padding-top: 10px;
 }
 
 /*# sourceMappingURL=styles.css.map */

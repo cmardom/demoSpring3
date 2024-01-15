@@ -3,57 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Crear comercial</title>
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}">
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
 
 </head>
 <body>
 
 <div id="contenedora">
     <form th:action="@{/comerciales/crear}" th:object="${comercial}" method="post">
-        <div >
+
+        <div class="header">
+            <h1>Crear comercial</h1>
+        </div>
+
+
+        <div class="theader">
+            <div class="list-group-items fw-bold">Nombre</div>
+            <div class="list-group-items fw-bold">Apellido1</div>
+            <div class="list-group-items fw-bold">Apellido2</div>
+            <div class="list-group-items fw-bold">Comision</div>
+        </div>
+        <div class="bodyTable">
             <div>
-                <h1>Crear comercial</h1>
+                <input class="form-control" th:field="*{nombre}" />
             </div>
+
             <div>
+                <input class="form-control" th:field="*{apellido1}" />
+            </div>
 
-                <div>
-                    <input type="submit" value="Crear"/>
-                </div>
+            <div>
+                <input class="form-control" th:field="*{apellido2}" />
+            </div>
 
+            <div>
+                <input class="form-control" th:field="*{comision}" />
             </div>
         </div>
 
-        <div>
-        </div>
-
-        <div>
-            <div>
-                Nombre
-            </div>
-            <div>
-                <input th:field="*{nombre}" />
-            </div>
-            <div>
-                Apellido 1
-            </div>
-            <div>
-                <input th:field="*{apellido1}" />
-            </div>
-            <div>
-                Apellido 2
-            </div>
-            <div>
-                <input th:field="*{apellido2}" />
-            </div>
-            <div>
-                Comisión
-            </div>
-            <div>
-                <input th:field="*{comision}" />
-            </div>
+        <div class="return">
+            <input class="btn btn-light" type="submit" value="Crear"/>
         </div>
 
     </form>
+
+    <div class="return">
+        <form action="/comerciales" >
+            <input class="btn btn-light" type="submit" value="Volver a listado" />
+        </form>
+    </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
