@@ -1,43 +1,50 @@
-body{
-  background: linear-gradient(45deg, #49a09d, #5f2c82);
-  font-family: sans-serif;
-  font-weight: 100;
-  color: white;
-  #contenedora{
-    border: 1px solid black;
-    margin: 0 auto;
-    max-width: 1100px;
-    .header{
-      border-bottom: 1px solid black;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      justify-items: center;
-      padding: 2% 0 2% 0;
-      background-color: #55608f;
+html {
 
-      .botonCrear{
-        margin-top: 5%;
+  body{
+    background: linear-gradient(45deg, #49a09d, #5f2c82);
+
+    font-family: sans-serif;
+    font-weight: 100;
+    color: white;
+    #contenedora{
+      border: 1px solid black;
+      margin: 0 auto;
+      max-width: 1100px;
+      .header{
+        border-bottom: 1px solid black;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+        padding: 2% 0 2% 0;
+        background-color: #55608f;
+
+        .botonCrear{
+          margin-top: 5%;
+          font-size: smaller;
+          background-color: navajowhite;
+        }
+
+
+
       }
 
-
-
-    }
-
-    .theader{
-      border-bottom: 1px solid black;
-      text-align: center;
-
-    }
-
-    .bodyTable{
-        text-indent: 25px;
-      &:hover {
-        background-color: rgba(255,255,255,0.3);
-      }
-      div{
+      .theader{
+        border-bottom: 1px solid black;
         text-align: center;
 
+      }
+
+      .bodyTable{
+        text-indent: 25px;
+        &:hover {
+          background-color: rgba(255,255,255,0.3);
+        }
+        div{
+          text-align: center;
+
+        }
       }
     }
   }
 }
+

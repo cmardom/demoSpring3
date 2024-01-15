@@ -16,7 +16,11 @@ public class ComercialDAOImpl implements ComercialDAO{
 
     @Override
     public synchronized void create(Comercial comercial){
-        jdbcTemplate.update("INSERT INTO comercial (nombre) VALUES (?)", comercial.getNombre());
+        jdbcTemplate.update("INSERT INTO comercial (nombre, apellido1, apellido2, comision) VALUES (?, ?, ?, ?)"
+                , comercial.getNombre()
+                , comercial.getApellido1()
+                , comercial.getApellido2()
+                , comercial.getComision());
     }
 
     @Override

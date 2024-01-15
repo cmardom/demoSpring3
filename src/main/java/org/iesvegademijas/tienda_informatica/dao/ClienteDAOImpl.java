@@ -16,7 +16,12 @@ public class ClienteDAOImpl implements  ClienteDAO{
 
     @Override
     public synchronized void create(Cliente cliente){
-        jdbcTemplate.update("INSERT INTO cliente (nombre) VALUES (?)", cliente.getNombre());
+        jdbcTemplate.update("INSERT INTO cliente (nombre, apellido1, apellido2, ciudad, categoria) VALUES (?, ?, ?, ?, ?)"
+                , cliente.getNombre()
+                , cliente.getApellido1()
+                , cliente.getApellido2()
+                , cliente.getCiudad()
+                , cliente.getCategoria());
     }
 
     @Override
@@ -35,7 +40,7 @@ public class ClienteDAOImpl implements  ClienteDAO{
                 , (rs, rowNum) -> new Cliente(rs.getInt("id"), rs.getString("nombre")
                                 , rs.getString("apellido1"), rs.getString("apellido2")
                                 , rs.getString("ciudad"), rs.getInt("categoria"))
-        );
+        ,id);
 
         if (cli != null) return Optional.of(cli);
         else return Optional.empty();
@@ -43,10 +48,20 @@ public class ClienteDAOImpl implements  ClienteDAO{
 
     @Override
     public void update(Cliente cliente){
-        int rows = jdbcTemplate.update("UPDATE cliente SET nombre = ? WHERE id  = ?"
-                    , cliente.getNombre(), cliente.getApellido1(), cliente.getApellido2()
-                    , cliente.getCategoria(), cliente.getCiudad()
-        );
+        int rows = jdbcTemplate.update("""
+										UPDATE cliente SET 
+														nombre = ?, 
+														apellido1 = ?, 
+														apellido2 = ?,
+														ciudad = ?,
+														categoria = ?  
+												WHERE id = ?
+										""", cliente.getNombre()
+                , cliente.getApellido1()
+                , cliente.getApellido2()
+                , cliente.getCiudad()
+                , cliente.getCategoria()
+                , cliente.getId());
 
         String consola = rows > 0 ? "Update de cliente con " + rows + " registros actualizados" : "No se han realizado updates de cliente";
         System.out.println(consola);
