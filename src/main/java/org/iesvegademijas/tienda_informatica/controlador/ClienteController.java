@@ -1,6 +1,7 @@
 package org.iesvegademijas.tienda_informatica.controlador;
 
 import org.iesvegademijas.tienda_informatica.modelo.Cliente;
+import org.iesvegademijas.tienda_informatica.modelo.Comercial;
 import org.iesvegademijas.tienda_informatica.servicio.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,6 +43,15 @@ public class ClienteController {
         return "crear-cliente";
     }
 
+    @PostMapping("/clientes/crear")
+    public RedirectView submitCrear(@ModelAttribute("cliente") Cliente cliente) {
+
+        clienteService.newCliente(cliente);
+
+        return new RedirectView("/clientes") ;
+
+    }
+
     @GetMapping("/clientes/editar/{id}")
     public String editar(Model model, @PathVariable Integer id){
         Cliente cliente = clienteService.one(id);
@@ -49,7 +59,7 @@ public class ClienteController {
         return "editar-cliente";
     }
 
-    @PostMapping("/clientes/editar{id}")
+    @PostMapping("/clientes/editar/{id}")
     public RedirectView submitEditar(@ModelAttribute("cliente") Cliente cliente){
         clienteService.replaceCliente(cliente);
         return new RedirectView("/clientes");
