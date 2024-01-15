@@ -24,7 +24,7 @@ body #contenedora .header .botonCrear {
 }
 body #contenedora .theader {
   padding-top: 10px;
-  border-bottom: 1px solid white;
+  border-bottom: 1px dotted white;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   justify-items: center;
@@ -40,7 +40,7 @@ body #contenedora .bodyTable:hover {
 body #contenedora .bodyTable .buttons {
   margin-right: 30px;
 }
-body #contenedora .bodyTable .buttons form input {
+body #contenedora .bodyTable .buttons form input, body #contenedora .bodyTable .buttons form button {
   font-size: 10pt;
 }
 body #contenedora .return {
@@ -48,7 +48,7 @@ body #contenedora .return {
   grid-template-columns: 1fr;
   justify-items: center;
   align-items: center;
-  border-top: 1px solid white;
+  border-top: 1px dotted white;
   padding-top: 10px;
 }
 

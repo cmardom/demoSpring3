@@ -29,8 +29,8 @@ CREATE TABLE pedido (
                         fecha DATE,
                         id_cliente INT,
                         id_comercial INT,
-                        FOREIGN KEY (id_cliente) REFERENCES cliente(id),
-                        FOREIGN KEY (id_comercial) REFERENCES comercial(id)
+                        FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE CASCADE,
+                        FOREIGN KEY (id_comercial) REFERENCES comercial(id) ON DELETE CASCADE
 );
 /*BORRARLA DESPUES DEL EJERCICIO*/
 CREATE TABLE fabricante (
