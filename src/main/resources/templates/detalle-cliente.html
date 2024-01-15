@@ -3,86 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalle Cliente</title>
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}">
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
 
 </head>
 <body>
 
-<div id="contenedora" >
-    <div>
-        <div>
-            <h1>Detalle Cliente</h1>
-        </div>
-        <div>
-
-            <div>
-
-                <form action="/clientes" >
-                    <input type="submit" value="Volver" />
-                </form>
-            </div>
-
-        </div>
+<div id="contenedora">
+    <div class="header">
+        <h1>Detalle Cliente</h1>
     </div>
 
-    <div>
-        <hr/>
+    <div class="theader">
+        <div class="list-group-items fw-bold">Código</div>
+        <div class="list-group-items fw-bold">Nombre</div>
+        <div class="list-group-items fw-bold">Apellido 1</div>
+        <div class="list-group-items fw-bold">Apellido 2</div>
+        <div class="list-group-items fw-bold">Ciudad</div>
+        <div class="list-group-items fw-bold">Categoria</div>
+
     </div>
 
-    <div>
-        <div>
-            <label>ID</label>
-        </div>
-        <div>
-            <p th:text="${cliente.id}"/>
-        </div>
+    <div class="bodyTable">
+        <div class="list-group-items fw-bold" th:text="${cliente.id}"></div>
+        <div class="list-group-items" th:text="${cliente.nombre}"></div>
+        <div class="list-group-items" th:text="${cliente.apellido1}"></div>
+        <div class="list-group-items" th:text="${cliente.apellido2}"></div>
+        <div class="list-group-items" th:text="${cliente.ciudad}"></div>
+        <div class="list-group-items" th:text="${cliente.categoria}"></div>
+
+
     </div>
 
-    <div>
-        <div>
-            <label>Nombre</label>
-        </div>
-        <div>
-            <p th:text="${cliente.nombre}"/>
-        </div>
-    </div>
+    <div class="return">
 
-    <div>
-        <div>
-            <label>Apellido 1</label>
-        </div>
-        <div>
-            <p th:text="${cliente.apellido1}"/>
-        </div>
-    </div>
-
-    <div>
-        <div>
-            <label>Apellido 2</label>
-        </div>
-        <div>
-            <p th:text="${cliente.apellido2}"/>
-        </div>
-    </div>
-
-    <div>
-        <div>
-            <label>Ciudad</label>
-        </div>
-        <div>
-            <p th:text="${cliente.ciudad}"/>
-        </div>
-    </div>
-
-    <div>
-        <div>
-            <label>Categoría</label>
-        </div>
-        <div>
-            <p th:text="${cliente.categoria}"/>
-        </div>
+        <form action="/clientes" >
+            <input class="btn btn-light" type="submit" value="Volver a listado" />
+        </form>
     </div>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
