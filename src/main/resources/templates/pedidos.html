@@ -32,33 +32,33 @@
         <div class="list-group-items fw-bold" th:text="${pedido.id}">Id</div>
         <div class="list-group-items" th:text="${pedido.total}">Total</div>
         <div class="list-group-items" th:text="${pedido.fecha}">Fecha</div>
-        <div class="list-group-items" th:text="${pedido.id_cliente}">Id cliente</div>
-        <div class="list-group-items" th:text="${pedido.id_comercial}">Id comercial</div>
+        <a class="btn" th:href="@{/clientes/__${pedido.id_cliente}__}" th:text="${pedido.id_cliente}"></a>
+        <a class="btn" th:href="@{/comerciales/__${pedido.id_comercial}__}" th:text="${pedido.id_comercial}"></a>
 
 
 
-        <div class="buttons btn-group">
+       <!-- <div class="buttons btn-group">
             <form th:action="@{/pedidos/__${pedido.id}__}">
                 <input class="btn btn-light" type="submit" value="Detalles" />
             </form>
             <form th:action="@{'/pedidos/editar/'+${pedido.id}} ">
                 <input class="btn btn-primary" type="submit" value="Editar" />
             </form>
-            <!--
+            &lt;!&ndash;
                         <form th:action="@{'/pedidos/borrar/'+${pedido.id}}" method="post">
                             <input class="btn btn-danger" type="submit" value="Eliminar" />
                         </form>
-            -->
+            &ndash;&gt;
 
 
-            <!-- Button trigger modal -->
+            &lt;!&ndash; Button trigger modal &ndash;&gt;
             <form th:action="@{'/pedidos/borrar/'+${pedido.id}}" method="post">
                 <button type="button" class="buttons btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal">
                     Borrar
                 </button>
             </form>
         </div>
-    </div>
+    </div>-->
 
     <div class="return">
         <form th:action="@{/}">
