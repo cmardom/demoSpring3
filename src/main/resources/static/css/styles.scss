@@ -28,11 +28,19 @@
 
       .theader{
         padding-top: 10px;
+        padding-bottom: 5px;
         border-bottom: 1px dotted white;
         display: grid;
         //grid-template-columns: repeat(6, 1fr);
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         justify-items: center;
+
+        .botones-inicio{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
       }
 
       .bodyTable{

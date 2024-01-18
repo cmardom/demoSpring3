@@ -10,7 +10,7 @@ import java.util.Optional;
 @Service
 public class PedidoService {
 
-    //@Autowired
+    @Autowired
     private PedidoDAO pedidoDAO;
 
     public List<Pedido> listAll(){
@@ -20,11 +20,7 @@ public class PedidoService {
     public Pedido one (Integer id){
         Optional<Pedido> optPed = pedidoDAO.find(id);
 
-        if(optPed.isPresent()){
-            return optPed.get();
-        } else {
-            return null;
-        }
+        return optPed.orElse(null);
     }
 
     public void newPedido(Pedido pedido){ pedidoDAO.create(pedido);}

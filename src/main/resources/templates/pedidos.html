@@ -23,6 +23,8 @@
         <div class="list-group-items fw-bold">Fecha</div>
         <div class="list-group-items fw-bold">Id cliente</div>
         <div class="list-group-items fw-bold">Id comercial</div>
+        <div class="list-group-items fw-bold">Acción</div>
+
 
     </div>
 
@@ -30,8 +32,8 @@
         <div class="list-group-items fw-bold" th:text="${pedido.id}">Id</div>
         <div class="list-group-items" th:text="${pedido.total}">Total</div>
         <div class="list-group-items" th:text="${pedido.fecha}">Fecha</div>
-        <div class="list-group-items" th:text="${pedido.cliente.id}">Id cliente</div>
-        <div class="list-group-items" th:text="${pedido.comercial.id}">Id comercial</div>
+        <div class="list-group-items" th:text="${pedido.id_cliente}">Id cliente</div>
+        <div class="list-group-items" th:text="${pedido.id_comercial}">Id comercial</div>
 
 
 

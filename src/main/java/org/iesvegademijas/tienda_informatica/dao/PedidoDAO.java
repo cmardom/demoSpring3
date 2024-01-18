@@ -9,6 +9,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/*VERSION DEL PROFESOR*/
+
+/*
 public interface PedidoDAO<Pedido> extends RepositoryBase<Pedido> {
 
     public Optional<Cliente> findClienteBy(int pedidoId);
@@ -41,4 +44,13 @@ public interface PedidoDAO<Pedido> extends RepositoryBase<Pedido> {
     public void update (Pedido pedido);
     public Optional<Pedido> find (int id);
     public void create (Pedido pedido);
+}*/
+
+public interface PedidoDAO {
+    public void create(Pedido pedido);
+    public List<Pedido> getAll();
+    public Optional<Pedido> find(int id);
+    public void update (Pedido pedido);
+    public void delete(int id);
+
 }

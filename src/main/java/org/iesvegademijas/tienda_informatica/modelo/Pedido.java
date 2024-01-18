@@ -2,6 +2,7 @@ package org.iesvegademijas.tienda_informatica.modelo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.iesvegademijas.tienda_informatica.dao.ClienteDAOImpl;
 
 import java.util.Date;
 @Data
@@ -10,20 +11,31 @@ public class Pedido {
     private int id;
     private double total;
     private Date fecha;
-    private Cliente cliente;
+    /*private Cliente cliente;
     private Comercial comercial;
-
+    */
+    private int id_cliente;
+    private int id_comercial;
     public Pedido() {
 
     }
 
-    public Pedido(int id, double total, Date fecha, Cliente cliente, Comercial comercial) {
+   /* public Pedido(int id, double total, Date fecha, Cliente cliente, Comercial comercial) {
         this.id = id;
         this.total = total;
         this.fecha = fecha;
         this.cliente = cliente;
         this.comercial = comercial;
     }
+*/
+    public Pedido (int id, double total, Date fecha, int id_cliente, int id_comercial){
+        this.id = id;
+        this.total = total;
+        this.fecha = fecha;
+        this.id_cliente = id_cliente;
+        this.id_comercial = id_comercial;
+    }
+
 
     public int getId() {
         return id;
@@ -49,7 +61,7 @@ public class Pedido {
         this.fecha = fecha;
     }
 
-    public Cliente getCliente() {
+   /* public Cliente getCliente() {
         return cliente;
     }
 
@@ -63,9 +75,9 @@ public class Pedido {
 
     public void setComercial(Comercial comercial) {
         this.comercial = comercial;
-    }
+    }*/
 
-    @Override
+  /*  @Override
     public String toString() {
         return "Pedido{" +
                 "id=" + id +
@@ -74,5 +86,5 @@ public class Pedido {
                 ", cliente=" + cliente +
                 ", comercial=" + comercial +
                 '}';
-    }
+    }*/
 }
