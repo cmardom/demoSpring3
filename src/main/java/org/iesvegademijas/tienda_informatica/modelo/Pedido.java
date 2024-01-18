@@ -62,7 +62,23 @@ public class Pedido {
         this.fecha = fecha;
     }
 
-   /* public Cliente getCliente() {
+    public int getId_cliente() {
+        return id_cliente;
+    }
+
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
+    }
+
+    public int getId_comercial() {
+        return id_comercial;
+    }
+
+    public void setId_comercial(int id_comercial) {
+        this.id_comercial = id_comercial;
+    }
+
+    /* public Cliente getCliente() {
         return cliente;
     }
 

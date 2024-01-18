@@ -2,7 +2,9 @@ package org.iesvegademijas.tienda_informatica.controlador;
 
 import org.iesvegademijas.tienda_informatica.modelo.Cliente;
 import org.iesvegademijas.tienda_informatica.modelo.Comercial;
+import org.iesvegademijas.tienda_informatica.modelo.Pedido;
 import org.iesvegademijas.tienda_informatica.servicio.ClienteService;
+import org.iesvegademijas.tienda_informatica.servicio.ComercialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,12 +15,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ClienteController {
 
     @Autowired
     private ClienteService clienteService;
+
+    @Autowired
+    private ComercialService comercialService;
 
     @GetMapping("/clientes")
     public String listarClientes (Model model){
@@ -31,6 +37,31 @@ public class ClienteController {
     public String detalleCliente(Model model, @PathVariable Integer id) {
         Cliente cliente = clienteService.one(id);
         model.addAttribute("cliente", cliente);
+
+        /*para mostrar los pedidos de cliente*/
+        /*INCLUIR DIV PEDIDOS EN HTML*/
+        int idCliente = cliente.getId();
+        List<Pedido> pedidos = clienteService.mostrarPedidosCliente(id);
+        List<Pedido> pedidosFiltradosCliente = pedidos.stream().filter(pedido -> pedido.getId_cliente() == idCliente).collect(Collectors.toList());
+
+        if(pedidosFiltradosCliente.isEmpty()){
+            pedidosFiltradosCliente = null;
+        }
+        model.addAttribute("pedidosFiltradosCliente", pedidosFiltradosCliente);
+
+
+        Comercial comercial = comercialService.one(id);
+        /*listar pedidos de comercial*/
+        List<Pedido> pedidosDelComercial = comercialService.mostrarPedidosComercial(id);
+        //int idComercial = comercial.getId();
+        List<Pedido> pedidosDelClienteConComercial = pedidosDelComercial.stream().filter(pedido -> pedido.getId_comercial() == idCliente).collect(Collectors.toList());
+
+        List<Integer> idsQueSalenEnLaListaDePedidos = pedidosDelClienteConComercial.stream().map(Pedido::getId_cliente).collect(Collectors.toList());
+
+        model.addAttribute("pedidosDelClienteConComercial", pedidosDelClienteConComercial);
+        model.addAttribute("idsQueSalenEnLasListaDePedidos", idsQueSalenEnLaListaDePedidos);
+
+
         return "detalle-cliente";
 
     }

@@ -203,4 +203,14 @@ public class PedidoDAOImpl implements PedidoDAO {
          return new ArrayList<>(ped);
 
      }
+
+     public List<Pedido> mostrarPedidosCliente(int id_cliente) {
+
+         List<Pedido> ped = jdbcTemplate.query("SELECT * from pedido p left join cliente c on p.id_comercial = c.id"
+                 , (rs, rowNum) -> new Pedido(rs.getInt("id"), rs.getDouble("total")
+                         , rs.getDate("fecha"), rs.getInt("id_cliente"), rs.getInt("id_comercial")));
+
+         return new ArrayList<>(ped);
+
+     }
  }
