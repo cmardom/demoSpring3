@@ -52,5 +52,8 @@ public interface PedidoDAO {
     public Optional<Pedido> find(int id);
     public void update (Pedido pedido);
     public void delete(int id);
+    public List<Pedido> mostrarPedidosComercial(int id_comercial);
+
+
 
 }

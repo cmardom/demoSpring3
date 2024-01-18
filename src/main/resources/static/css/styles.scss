@@ -3,8 +3,7 @@
   body{
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,121,1) 35%, rgba(0,212,255,1) 100%);
-    font-family: sans-serif;
-    font-weight: 100;
+    //font-family: sans-serif;
     color: white;
 
     #contenedora{
@@ -41,6 +40,20 @@
           align-items: center;
           gap: 10px;
         }
+      }
+
+      .pedidos{
+        border: 1px dotted white;
+        margin-top: 5%;
+
+        .fondoTitulo{
+          background-color: white;
+          h3{
+            text-align: center;
+            color: #1334E0FF;
+          }
+        }
+
       }
 
       .bodyTable{

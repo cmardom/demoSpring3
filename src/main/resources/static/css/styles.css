@@ -1,8 +1,6 @@
 body {
   background: rgb(2, 0, 36);
   background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(121, 9, 121) 35%, rgb(0, 212, 255) 100%);
-  font-family: sans-serif;
-  font-weight: 100;
   color: white;
 }
 body #contenedora {
@@ -35,6 +33,17 @@ body #contenedora .theader .botones-inicio {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+}
+body #contenedora .pedidos {
+  border: 1px dotted white;
+  margin-top: 5%;
+}
+body #contenedora .pedidos .fondoTitulo {
+  background-color: white;
+}
+body #contenedora .pedidos .fondoTitulo h3 {
+  text-align: center;
+  color: #1334e0;
 }
 body #contenedora .bodyTable {
   display: grid;

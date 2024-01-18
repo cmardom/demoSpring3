@@ -1,6 +1,7 @@
 package org.iesvegademijas.tienda_informatica.controlador;
 
 import org.iesvegademijas.tienda_informatica.modelo.Fabricante;
+import org.iesvegademijas.tienda_informatica.modelo.Pedido;
 import org.iesvegademijas.tienda_informatica.servicio.ComercialService;
 import org.iesvegademijas.tienda_informatica.modelo.Comercial;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,12 @@ public class ComercialController {
     @GetMapping("/comerciales/{id}")
     public String detalleComercial(Model model, @PathVariable Integer id) {
         Comercial comercial = comercialService.one(id);
+
+        /*PRUEBA*/
+        List<Pedido> pedidos = comercialService.mostrarPedidosComercial(id);
+        model.addAttribute("pedidos", pedidos);
+
+
         model.addAttribute("comercial", comercial);
         return "detalle-comercial";
     }

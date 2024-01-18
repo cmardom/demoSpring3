@@ -12,8 +12,10 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 /*
 
 @Slf4j
@@ -126,15 +128,15 @@ public class PedidoDAOImpl implements PedidoDAO<Pedido>{
 
 
  @Repository
-public class PedidoDAOImpl implements PedidoDAO{
+public class PedidoDAOImpl implements PedidoDAO {
 
      @Autowired
      private JdbcTemplate jdbcTemplate;
 
      @Override
-     public synchronized void create (Pedido pedido){
+     public synchronized void create(Pedido pedido) {
          jdbcTemplate.update("INSERT INTO pedido (total, fecha, id_cliente, id_comercial)" +
-                 "VALUES (?, ?, ?, ?)"
+                         "VALUES (?, ?, ?, ?)"
                  , pedido.getTotal()
                  , pedido.getFecha()
                  , pedido.getId_cliente()
@@ -142,9 +144,8 @@ public class PedidoDAOImpl implements PedidoDAO{
      }
 
 
-
      @Override
-     public List<Pedido> getAll(){
+     public List<Pedido> getAll() {
 
 
          List<Pedido> listaPed = jdbcTemplate.query("SELECT * FROM pedido", (rs, rowNum) -> new Pedido(rs.getInt("id"), rs.getDouble("total")
@@ -154,23 +155,24 @@ public class PedidoDAOImpl implements PedidoDAO{
 
 
      @Override
-     public Optional<Pedido> find(int id){
-         Pedido cli = jdbcTemplate
+     public Optional<Pedido> find(int id) {
+         Pedido ped = jdbcTemplate
                  .queryForObject("SELECT * FROM pedido WHERE id = ?"
                          , (rs, rowNum) -> new Pedido(rs.getInt("id"), rs.getDouble("total")
                                  , rs.getDate("fecha"), rs.getInt("id_cliente")
                                  , rs.getInt("id_comercial"))
-                         ,id);
+                         , id);
 
-         if (cli != null) return Optional.of(cli);
+         if (ped != null) return Optional.of(ped);
          else return Optional.empty();
      }
 
 
      @Override
-     public void update(Pedido pedido){
+     public void update(Pedido pedido) {
          int rows = jdbcTemplate.update("""
-										UPDATE pedido SET 
+										
+                         UPDATE pedido SET 
 														total = ?, 
 														fecha = ? 
 												WHERE id = ?
@@ -192,10 +194,13 @@ public class PedidoDAOImpl implements PedidoDAO{
 
      }
 
+     public List<Pedido> mostrarPedidosComercial(int id_comercial) {
 
+         List<Pedido> ped = jdbcTemplate.query("SELECT * from pedido p left join comercial c on p.id_comercial = c.id"
+                 , (rs, rowNum) -> new Pedido(rs.getInt("id"), rs.getDouble("total")
+                         , rs.getDate("fecha"), rs.getInt("id_cliente"), rs.getInt("id_comercial")));
 
-
+         return new ArrayList<>(ped);
 
      }
-
-
+ }

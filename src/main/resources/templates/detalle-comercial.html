@@ -31,6 +31,33 @@
 
     </div>
 
+    <div class="pedidos">
+        <div class="fondoTitulo">
+            <h3 class="fw-bold">Pedidos</h3>
+        </div>
+
+        <div class="theader">
+            <div class="list-group-items fw-bold">ID Pedido</div>
+            <div class="list-group-items fw-bold">Total</div>
+            <div class="list-group-items fw-bold">Fecha</div>
+            <div class="list-group-items fw-bold">ID Cliente</div>
+            <div class="list-group-items fw-bold">ID Comercial</div>
+        </div>
+
+        <div class="bodyTable" th:each="pedido : ${pedidos}">
+            <div class="list-group-items fw-bold" th:text="${pedido.id}"></div>
+            <div class="list-group-items" th:text="${pedido.total}"></div>
+            <div class="list-group-items" th:text="${pedido.fecha}"></div>
+            <div class="list-group-items" th:text="${pedido.id_cliente}"></div>
+            <div class="list-group-items" th:text="${pedido.id_cliente}"></div>
+
+        </div>
+
+    </div>
+
+
+
+
     <div class="return">
 
         <form action="/comerciales" >
