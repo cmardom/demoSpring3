@@ -3,6 +3,10 @@ const modalBody = modal.querySelector('.modal-body');
 const modalFooter = modal.querySelector('.modal-footer');
 const botonEliminar = modalFooter.lastElementChild;
 let clickListener = null;
+
+
+
+/*Alert hecho con bootstrap para confirmar eliminar*/
 modal.addEventListener('show.bs.modal', (event)=> {
     const button =  event.relatedTarget;
 
@@ -18,7 +22,7 @@ modal.addEventListener('show.bs.modal', (event)=> {
     // console.log(id, nombre, apellido1, apellido2);
 
 
-    modalBody.innerText = `Estas seguro de querer borrar el usuario con id ${id}: ${nombre} ${apellido1} ${apellido2}?`
+    modalBody.innerText = `¿Estás seguro/a de querer borrar el usuario con ID ${id}: ${nombre} ${apellido1} ${apellido2}?`
     clickListener = botonEliminar.addEventListener('click', () => {
         form.submit();
     });

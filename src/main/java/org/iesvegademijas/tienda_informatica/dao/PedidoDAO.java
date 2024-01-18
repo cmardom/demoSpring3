@@ -36,4 +36,9 @@ public interface PedidoDAO<Pedido> extends RepositoryBase<Pedido> {
     }
 
     public void delete(int id);
+
+    public List<Pedido> getAll();
+    public void update (Pedido pedido);
+    public Optional<Pedido> find (int id);
+    public void create (Pedido pedido);
 }
