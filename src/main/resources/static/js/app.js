@@ -21,8 +21,15 @@ modal.addEventListener('show.bs.modal', (event)=> {
 
     // console.log(id, nombre, apellido1, apellido2);
 
+    //Para traducir el texto del modal
+    if(form.innerText.includes("Delete")){
+        modalBody.innerText = `Do you still want to delete user with ID ${id}: ${nombre} ${apellido1} ${apellido2}?`
 
-    modalBody.innerText = `¿Estás seguro/a de querer borrar el usuario con ID ${id}: ${nombre} ${apellido1} ${apellido2}?`
+    } else{
+        modalBody.innerText = `¿Estás seguro/a de querer borrar el usuario con ID ${id}: ${nombre} ${apellido1} ${apellido2}?`
+
+    }
+
     clickListener = botonEliminar.addEventListener('click', () => {
         form.submit();
     });

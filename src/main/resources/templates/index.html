@@ -10,21 +10,21 @@
 <body>
     <div id="contenedora">
         <div class="header">
-            <h1>Inicio</h1>
+            <h1 th:text="#{h1_inicio}"></h1>
         </div>
 
         <div class="theader">
             <div class="btn-group botones-inicio">
                 <form action="/comerciales">
-                    <input class="btn btn-light" type="submit" value="Comerciales" />
+                    <input class="btn btn-light" type="submit" th:value="#{btn_comerciales}" />
                 </form>
 
                 <form action="/clientes">
-                    <input class="btn btn-light" type="submit" value="Clientes" />
+                    <input class="btn btn-light" type="submit" th:value="#{btn_clientes}" />
                 </form>
 
                 <form action="/pedidos">
-                    <input class="btn btn-light" type="submit" value="Pedidos" />
+                    <input class="btn btn-light" type="submit" th:value="#{btn_pedidos}" />
                 </form>
 
             </div>
@@ -32,3 +32,6 @@
     </div>
 </body>
 </html>
+
+<!--
+th:text="#{fabricante}"-->
