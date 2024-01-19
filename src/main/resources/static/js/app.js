@@ -21,7 +21,7 @@ modal.addEventListener('show.bs.modal', (event)=> {
 
     // console.log(id, nombre, apellido1, apellido2);
 
-    //Para traducir el texto del modal
+    //Para traducir el texto del modal: cambiarlo para internacionalización
     if(form.innerText.includes("Delete")){
         modalBody.innerText = `Do you still want to delete user with ID ${id}: ${nombre} ${apellido1} ${apellido2}?`
 

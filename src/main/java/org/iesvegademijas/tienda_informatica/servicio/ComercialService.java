@@ -34,6 +34,7 @@ public class ComercialService {
     }
 
     public Comercial one (Integer id){
+        /*mover aqui la logica de pedido u otro metodo para las listas*/
         Optional<Comercial> optCom = comercialDAO.find(id);
 
         if (optCom.isPresent()){

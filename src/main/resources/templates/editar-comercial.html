@@ -11,14 +11,14 @@
 <div id="contenedora">
     <form  th:action="@{/comerciales/editar/__${comercial.id}__}" th:object="${comercial}" method="post" >
         <div class="header">
-            <h1>Editar comercial</h1>
+            <h1 th:text="#{h1_editarComercial}">Editar comercial</h1>
         </div>
 
         <div class="theader">
-            <div class="list-group-items fw-bold">Nombre</div>
-            <div class="list-group-items fw-bold">Apellido1</div>
-            <div class="list-group-items fw-bold">Apellido2</div>
-            <div class="list-group-items fw-bold">Comision</div>
+            <div class="list-group-items fw-bold" th:text="#{txt_Nombre}"></div>
+            <div class="list-group-items fw-bold" th:text="#{txt_Apellido1}"></div>
+            <div class="list-group-items fw-bold" th:text="#{txt_Apellido2}"></div>
+            <div class="list-group-items fw-bold" th:text="#{txt_Comisión}"></div>
         </div>
         <div class="bodyTable">
             <div>
@@ -39,14 +39,14 @@
         </div>
 
         <div class="return">
-            <input class="btn btn-primary" type="submit" value="Guardar cambios"/>
+            <input class="btn btn-primary" type="submit" th:value="#{btn_guardarCambios}"/>
         </div>
 
     </form>
 
     <div class="return">
         <form action="/comerciales" >
-            <input class="btn btn-light" type="submit" value="Volver a listado" />
+            <input class="btn btn-light" type="submit" th:value="#{btn_volverAListado}" />
         </form>
     </div>
 

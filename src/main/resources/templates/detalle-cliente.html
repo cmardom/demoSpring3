@@ -11,16 +11,17 @@
 
 <div id="contenedora">
     <div class="header">
-        <h1>Detalle Cliente</h1>
+        <h1 th:text="#{h1_detalleCliente}"></h1>
     </div>
 
     <div class="theader">
-        <div class="list-group-items fw-bold">Código</div>
-        <div class="list-group-items fw-bold">Nombre</div>
-        <div class="list-group-items fw-bold">Apellido 1</div>
-        <div class="list-group-items fw-bold">Apellido 2</div>
-        <div class="list-group-items fw-bold">Ciudad</div>
-        <div class="list-group-items fw-bold">Categoria</div>
+        <div class="list-group-items fw-bold" th:text="#{txt_ID}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_Nombre}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_Apellido1}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_Apellido2}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_Ciudad}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_Categoría}"></div>
+
 
     </div>
 
@@ -36,17 +37,17 @@
     <div class="pedidos">
 
         <div class="fondoTitulo">
-            <h3 class="fw-bold">Pedidos</h3>
+            <h3 class="fw-bold" th:text="#{h1_Pedidos}"></h3>
         </div>
 
         <!--/*Si hay pedidos, se muestra listado*/-->
         <div th:if="${pedidosFiltradosCliente}">
             <div class="theader">
-                <div class="list-group-items fw-bold">ID Pedido</div>
-                <div class="list-group-items fw-bold">Total</div>
-                <div class="list-group-items fw-bold">Fecha</div>
-                <div class="list-group-items fw-bold">ID Cliente</div>
-                <div class="list-group-items fw-bold">ID Comercial</div>
+                <div class="list-group-items fw-bold" th:text="#{txt_IDPedido}"></div>
+                <div class="list-group-items fw-bold" th:text="#{txt_Total}"></div>
+                <div class="list-group-items fw-bold" th:text="#{txt_Fecha}"></div>
+                <div class="list-group-items fw-bold" th:text="#{txt_IDCliente}"></div>
+                <div class="list-group-items fw-bold" th:text="#{txt_IDComercial}"></div>
             </div>
 
             <div class="bodyTable" th:each="pedido : ${pedidosFiltradosCliente}">
@@ -63,7 +64,7 @@
 
 
             <div class="theader">
-                <div class="list-group-items fw-bold">El cliente no ha realizado pedidos</div>
+                <div class="list-group-items fw-bold" th:text="#{msg_noPedidos}"></div>
             </div>
         </div>
 
@@ -80,7 +81,7 @@
     <div class="return">
 
         <form action="/clientes" >
-            <input class="btn btn-light" type="submit" value="Volver a listado" />
+            <input class="btn btn-light" type="submit" th:value="#{btn_volverAListado}" />
         </form>
     </div>
 

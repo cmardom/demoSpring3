@@ -11,38 +11,38 @@
 
 <div id="contenedora">
     <div class="header">
-        <h1>Clientes</h1>
+        <h1 th:text="#{h1_clientes}"></h1>
         <form action="/clientes/crear">
-            <input class="botonCrear btn btn-light" type="submit" value="Crear nuevo cliente">
+            <input class="botonCrear btn btn-light" type="submit" th:value="#{btn_crearNuevoCliente}">
         </form>
     </div>
 
     <div class="theader">
-        <div class="list-group-items fw-bold">Código</div>
-        <div class="list-group-items fw-bold">Nombre</div>
-        <div class="list-group-items fw-bold">Apellido 1</div>
-        <div class="list-group-items fw-bold">Apellido 2</div>
-        <div class="list-group-items fw-bold">Ciudad</div>
-        <div class="list-group-items fw-bold">Categoria</div>
-        <div class="list-group-items fw-bold">Acción</div>
+        <div class="list-group-items fw-bold" th:text="#{txt_ID}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_Nombre}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_Apellido1}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_Apellido2}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_Ciudad}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_Categoría}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_Acción}"></div>
     </div>
 
     <div class="bodyTable" th:each="cliente : ${listaClientes}">
-        <div class="list-group-items fw-bold" th:text="${cliente.id}">Código</div>
-        <div class="list-group-items" th:text="${cliente.nombre}">Nombre</div>
-        <div class="list-group-items" th:text="${cliente.apellido1}">Apellido 1</div>
-        <div class="list-group-items" th:text="${cliente.apellido2}">Apellido 2</div>
-        <div class="list-group-items" th:text="${cliente.ciudad}">Ciudad</div>
-        <div class="list-group-items" th:text="${cliente.categoria}">Categoria</div>
+        <div class="list-group-items fw-bold" th:text="${cliente.id}"></div>
+        <div class="list-group-items" th:text="${cliente.nombre}"></div>
+        <div class="list-group-items" th:text="${cliente.apellido1}"> </div>
+        <div class="list-group-items" th:text="${cliente.apellido2}"></div>
+        <div class="list-group-items" th:text="${cliente.ciudad}"></div>
+        <div class="list-group-items" th:text="${cliente.categoria}"></div>
 
 
 
         <div class="buttons btn-group">
             <form th:action="@{/clientes/__${cliente.id}__}">
-                <input class="btn btn-light" type="submit" value="Detalles" />
+                <input class="btn btn-light" type="submit" th:value="#{btn_detalles}" />
             </form>
-            <form th:action="@{'/clientes/editar/'+${cliente.id}} ">
-                <input class="btn btn-primary" type="submit" value="Editar" />
+            <form th:action="@{/clientes/editar/__${cliente.id}__} ">
+                <input class="btn btn-primary" type="submit" th:value="#{btn_editar}" />
             </form>
 <!--
             <form th:action="@{'/clientes/borrar/'+${cliente.id}}" method="post">
@@ -53,8 +53,8 @@
 
             <!-- Button trigger modal -->
             <form th:action="@{'/clientes/borrar/'+${cliente.id}}" method="post">
-                <button type="button" class="buttons btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal">
-                    Borrar
+                <button type="button" class="buttons btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal" th:text="#{btn_borrar}">
+
                 </button>
             </form>
         </div>
@@ -62,7 +62,7 @@
 
     <div class="return">
         <form th:action="@{/}">
-            <input class="btn btn-light" type="submit" value="Volver a inicio" />
+            <input class="btn btn-light" type="submit" th:value="#{btn_volverAInicio}" />
         </form>
     </div>
    
@@ -72,18 +72,19 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title " id="modalLabel">Confirmar borrado</h5>
+                <h5 class="modal-title " id="modalLabel" th:text="#{txt_confirmarBorrado}"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 ...
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-danger">Eliminar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" th:text="#{btn_cerrar}"></button>
+                <button type="button" class="btn btn-danger" th:text="#{btn_borrar}"></button>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 

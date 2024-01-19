@@ -13,16 +13,16 @@
     <form th:action="@{/clientes/crear}" th:object="${cliente}" method="post">
 
         <div class="header">
-            <h1>Crear cliente</h1>
+            <h1 th:text="#{h1_crearCliente}"></h1>
         </div>
 
 
         <div class="theader">
-            <div class="list-group-items fw-bold">Nombre</div>
-            <div class="list-group-items fw-bold">Apellido1</div>
-            <div class="list-group-items fw-bold">Apellido2</div>
-            <div class="list-group-items fw-bold">Ciudad</div>
-            <div class="list-group-items fw-bold">Categoria</div>
+            <div class="list-group-items fw-bold" th:text="#{txt_Nombre}"></div>
+            <div class="list-group-items fw-bold" th:text="#{txt_Apellido1}"></div>
+            <div class="list-group-items fw-bold" th:text="#{txt_Apellido2}"></div>
+            <div class="list-group-items fw-bold" th:text="#{txt_Ciudad}"></div>
+            <div class="list-group-items fw-bold" th:text="#{txt_Categoría}">Categoria</div>
 
         </div>
         <div class="bodyTable">
@@ -48,14 +48,14 @@
         </div>
 
         <div class="return">
-            <input class="btn btn-primary" type="submit" value="Crear"/>
+            <input class="btn btn-primary" type="submit" th:value="#{btn_crear}"/>
         </div>
 
     </form>
 
     <div class="return">
         <form action="/clientes" >
-            <input class="btn btn-light" type="submit" value="Volver a listado" />
+            <input class="btn btn-light" type="submit" th:value="#{btn_volverAListado}" />
         </form>
     </div>
 </div>

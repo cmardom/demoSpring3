@@ -39,7 +39,6 @@ public class ClienteController {
         model.addAttribute("cliente", cliente);
 
         /*para mostrar los pedidos de cliente*/
-        /*INCLUIR DIV PEDIDOS EN HTML*/
         int idCliente = cliente.getId();
         List<Pedido> pedidos = clienteService.mostrarPedidosCliente(id);
         List<Pedido> pedidosFiltradosCliente = pedidos.stream().filter(pedido -> pedido.getId_cliente() == idCliente).collect(Collectors.toList());
