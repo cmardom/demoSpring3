@@ -11,19 +11,19 @@
 
 <div id="contenedora">
     <div class="header">
-        <h1>Pedidos</h1>
+        <h1 th:text="#{h1_Pedidos}"></h1>
         <form action="/pedidos/crear">
-            <input class="botonCrear btn btn-light" type="submit" value="Crear nuevo pedido">
+            <input disabled="disabled" class="botonCrear btn btn-light" type="submit" th:value="#{btn_crearNuevoPedido}">
         </form>
     </div>
 
     <div class="theader">
-        <div class="list-group-items fw-bold">Id</div>
-        <div class="list-group-items fw-bold">Total</div>
-        <div class="list-group-items fw-bold">Fecha</div>
-        <div class="list-group-items fw-bold">Id cliente</div>
-        <div class="list-group-items fw-bold">Id comercial</div>
-        <div class="list-group-items fw-bold">Acción</div>
+        <div class="list-group-items fw-bold" th:text="#{txt_ID}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_Total}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_Fecha}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_IDCliente}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_IDComercial}"></div>
+        <div class="list-group-items fw-bold" th:text="#{txt_Acción}"></div>
 
 
     </div>
@@ -32,37 +32,36 @@
         <div class="list-group-items fw-bold" th:text="${pedido.id}">Id</div>
         <div class="list-group-items" th:text="${pedido.total}">Total</div>
         <div class="list-group-items" th:text="${pedido.fecha}">Fecha</div>
-        <a class="btn" th:href="@{/clientes/__${pedido.id_cliente}__}" th:text="${pedido.id_cliente}"></a>
-        <a class="btn" th:href="@{/comerciales/__${pedido.id_comercial}__}" th:text="${pedido.id_comercial}"></a>
+        <a class="btn" disabled="disabled" th:href="@{/clientes/__${pedido.id_cliente}__}" th:text="${pedido.id_cliente}"></a>
+        <a class="btn" disabled="disabled" th:href="@{/comerciales/__${pedido.id_comercial}__}" th:text="${pedido.id_comercial}"></a>
 
 
 
-       <!-- <div class="buttons btn-group">
+       <div class="buttons btn-group">
             <form th:action="@{/pedidos/__${pedido.id}__}">
-                <input class="btn btn-light" type="submit" value="Detalles" />
+                <input disabled="disabled" class="btn btn-light" type="submit" th:value="#{btn_detalles}" />
             </form>
             <form th:action="@{'/pedidos/editar/'+${pedido.id}} ">
-                <input class="btn btn-primary" type="submit" value="Editar" />
+                <input disabled="disabled" class="btn btn-primary" type="submit" th:value="#{btn_editar}" />
             </form>
-            &lt;!&ndash;
-                        <form th:action="@{'/pedidos/borrar/'+${pedido.id}}" method="post">
-                            <input class="btn btn-danger" type="submit" value="Eliminar" />
-                        </form>
-            &ndash;&gt;
 
-
-            &lt;!&ndash; Button trigger modal &ndash;&gt;
             <form th:action="@{'/pedidos/borrar/'+${pedido.id}}" method="post">
-                <button type="button" class="buttons btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal">
+                <input disabled="disabled" class="btn btn-danger" type="submit" th:value="#{btn_borrar}" />
+            </form>
+
+            <!--
+            <form th:action="@{'/pedidos/borrar/'+${pedido.id}}" method="post">
+                <button type="button" class="buttons btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal" th:text="#{btn_borrar}">
                     Borrar
                 </button>
             </form>
+           -->
         </div>
-    </div>-->
+    </div>
 
     <div class="return">
         <form th:action="@{/}">
-            <input class="btn btn-light" type="submit" value="Volver a inicio" />
+            <input class="btn btn-light" type="submit" th:value="#{btn_volverAListado}" />
         </form>
     </div>
 
