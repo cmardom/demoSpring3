@@ -56,7 +56,29 @@ INSERT INTO cliente (nombre, apellido1, apellido2, ciudad, categoria) VALUES
                                                                           ('Paco', 'Lozano', 'Moreno', 'Granada', 3),
                                                                           ('Laura', 'López', 'Ruiz', 'Barcelona', 2),
                                                                           ('Carlos', 'García', 'Martín', 'Sevilla', 2),
-                                                                          ('Sergio', 'Jiménez', 'Alonso', 'Bilbao', 2);
+                                                                          ('Sergio', 'Jiménez', 'Alonso', 'Bilbao', 2),
+                                                                          ('Elena', 'Ruiz', 'Fernández', 'Madrid', 1),
+                                                                          ('Luis', 'Fernández', 'Gómez', 'Barcelona', 3),
+                                                                          ('María', 'Fernández', 'Gómez', 'Madrid', 1),
+                                                                          ('Javier', 'Ruiz', 'Santos', 'Barcelona', 2),
+                                                                          ('Luisa', 'García', 'Fernández', 'Sevilla', 1),
+                                                                          ('Pedro', 'Gómez', 'Martínez', 'Valencia', 3),
+                                                                          ('Carmen', 'Martínez', 'López', 'Granada', 3),
+                                                                          ('Pablo', 'Sánchez', 'Gómez', 'Barcelona', 2),
+                                                                          ('Elena', 'Gómez', 'Martín', 'Sevilla', 2),
+                                                                          ('Raúl', 'López', 'Martínez', 'Bilbao', 2),
+                                                                          ('Isabel', 'González', 'Fernández', 'Madrid', 1),
+                                                                          ('Santiago', 'Martínez', 'Santos', 'Barcelona', 3),
+                                                                          ('Silvia', 'Torres', 'Fernández', 'Sevilla', 1),
+                                                                          ('Roberto', 'Gómez', 'Martínez', 'Valencia', 3),
+                                                                          ('Marta', 'Martínez', 'López', 'Granada', 3),
+                                                                          ('Adrián', 'Sánchez', 'Gómez', 'Barcelona', 2),
+                                                                          ('Ana', 'Gómez', 'Martín', 'Sevilla', 2),
+                                                                          ('José', 'López', 'Martínez', 'Bilbao', 2),
+                                                                          ('Laura', 'González', 'Fernández', 'Madrid', 1),
+                                                                          ('Carlos', 'Martínez', 'Santos', 'Barcelona', 3),
+                                                                          ('Eva', 'Torres', 'Fernández', 'Sevilla', 1),
+                                                                          ('Jorge', 'Gómez', 'Martínez', 'Valencia', 3);
 
 -- Inserciones para la tabla comercial
 INSERT INTO comercial (nombre, apellido1, apellido2, comision) VALUES
@@ -66,7 +88,30 @@ INSERT INTO comercial (nombre, apellido1, apellido2, comision) VALUES
                                                                    ('Antonio', 'Torres', 'Iglesias', 4.5),
                                                                    ('Maria', 'Gavilan', 'Vázquez', 6.0),
                                                                    ('Rafael', 'Campos', 'Iglesias', 4.5),
-                                                                   ('Carolina', 'Negro', 'Castillo', 5.5);
+                                                                   ('Carolina', 'Negro', 'Castillo', 5.5),
+                                                                   ('Javier', 'González', 'Martínez', 6.5),
+                                                                   ('Isabel', 'Sánchez', 'García', 5.0),
+                                                                   ('Alberto', 'Martínez', 'López', 7.0),
+                                                                   ('Laura', 'Rodríguez', 'Díaz', 5.0),
+                                                                   ('Diego', 'Hernández', 'Santos', 7.5),
+                                                                   ('Lucía', 'Romero', 'Vázquez', 6.0),
+                                                                   ('Alejandro', 'Torres', 'Iglesias', 4.5),
+                                                                   ('Mónica', 'Gavilan', 'Vázquez', 6.0),
+                                                                   ('Víctor', 'Campos', 'Iglesias', 4.5),
+                                                                   ('Sara', 'Negro', 'Castillo', 5.5),
+                                                                   ('Francisco', 'González', 'Martínez', 6.5),
+                                                                   ('Cristina', 'Sánchez', 'García', 5.0),
+                                                                   ('Rubén', 'Martínez', 'López', 7.0),
+                                                                   ('Natalia', 'Rodríguez', 'Díaz', 5.0),
+                                                                   ('Joaquín', 'Hernández', 'Santos', 7.5),
+                                                                   ('Beatriz', 'Romero', 'Vázquez', 6.0),
+                                                                   ('José Manuel', 'Torres', 'Iglesias', 4.5),
+                                                                   ('Elena', 'Gavilan', 'Vázquez', 6.0),
+                                                                   ('Mario', 'Campos', 'Iglesias', 4.5),
+                                                                   ('Silvia', 'Negro', 'Castillo', 5.5),
+                                                                   ('Fernando', 'González', 'Martínez', 6.5),
+                                                                   ('Patricia', 'Sánchez', 'García', 5.0),
+                                                                   ('Andrés', 'Martínez', 'López', 7.0);
 
 -- Inserciones para la tabla pedido
 -- Nota: Se asume que los ids de cliente y comercial existen.
@@ -78,5 +123,18 @@ INSERT INTO pedido (total, fecha, id_cliente, id_comercial) VALUES
                                                                 (600.00, '2024-01-13', 4, 4),
                                                                 (185.55, '2024-01-12', 4, 3),
                                                                 (650.00, '2024-01-13', 3, 4),
-                                                                (320.20, '2024-01-14', 5, 5);
+                                                                (320.20, '2024-01-14', 5, 5),
+                                                                (520.75, '2024-01-15', 6, 6),
+                                                                (420.30, '2024-01-16', 7, 7),
+                                                                (710.50, '2024-01-17', 8, 8),
+                                                                (280.90, '2024-01-18', 9, 9),
+                                                                (390.80, '2024-01-27', 1, 1),
+                                                                (160.45, '2024-01-28', 2, 2),
+                                                                (520.20, '2024-01-29', 3, 3),
+                                                                (175.75, '2024-01-30', 4, 4),
+                                                                (450.60, '2024-01-31', 5, 5),
+                                                                (310.90, '2024-02-01', 6, 6),
+                                                                (600.30, '2024-02-02', 7, 7),
+                                                                (225.10, '2024-02-03', 8, 8),
+                                                                (520.80, '2024-02-04', 9, 9);
 

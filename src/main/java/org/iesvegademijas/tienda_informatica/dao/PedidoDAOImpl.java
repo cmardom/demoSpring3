@@ -195,8 +195,8 @@ public class PedidoDAOImpl implements PedidoDAO {
      }
 
      public List<Pedido> mostrarPedidosComercial(int id_comercial) {
-
-         List<Pedido> ped = jdbcTemplate.query("SELECT * from pedido p left join comercial c on p.id_comercial = c.id"
+/*ARREGLAR WHERE EN LA QUERY*/
+         List<Pedido> ped = jdbcTemplate.query("SELECT * from pedido p left join comercial c on p.id_comercial = c.id where p.id_comercial = c.id"
                  , (rs, rowNum) -> new Pedido(rs.getInt("id"), rs.getDouble("total")
                          , rs.getDate("fecha"), rs.getInt("id_cliente"), rs.getInt("id_comercial")));
 

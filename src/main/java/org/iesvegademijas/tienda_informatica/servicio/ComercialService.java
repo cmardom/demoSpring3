@@ -24,11 +24,29 @@ public class ComercialService {
     private PedidoDAO pedidoDAO;
 
 
+
+
     public List<Pedido> mostrarPedidosComercial(int id_comercial) {
         return pedidoDAO.mostrarPedidosComercial(id_comercial);
 
     }
+/*Añade las estadísticas de total y media de pedidos del comercial en su detalle.
+Utiliza un DTO para transferir a la vista las estadísticas de inteligencia de pedidos*/
+    public double totalPedidoComercial (int id_comercial){
+        List<Pedido> pedidos = mostrarPedidosComercial(id_comercial);
 
+        double resultado = pedidos.stream().map(p -> p.getTotal()).reduce(0.0, Double::sum).doubleValue();
+        return resultado;
+    }
+
+    public double mediaPedidoComercial (int id_comercial){
+        List<Pedido> pedidos = mostrarPedidosComercial(id_comercial);
+        int numPedidos = pedidos.size();
+        double total = totalPedidoComercial(id_comercial);
+
+        return total / numPedidos;
+
+    }
     public List<Comercial> listAll(){
         return comercialDAO.getAll();
     }

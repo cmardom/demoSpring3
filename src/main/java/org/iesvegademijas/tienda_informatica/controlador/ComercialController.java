@@ -26,6 +26,9 @@ public class ComercialController {
     @Autowired
     private ClienteService clienteService;
 
+
+
+
     @GetMapping("/comerciales")
     public String listarComerciales (Model model){
         List<Comercial> listAllCom = comercialService.listAll();
@@ -63,9 +66,12 @@ public class ComercialController {
         model.addAttribute("pedidosFiltradosComercial", pedidosFiltradosComercial);
 
 
+        double total = comercialService.totalPedidoComercial(id);
 
+        model.addAttribute("totalPedidosComercial", total);
 
-
+        double media = comercialService.mediaPedidoComercial(id);
+        model.addAttribute("mediaPedidosComercial", media);
 
 
         model.addAttribute("comercial", comercial);
