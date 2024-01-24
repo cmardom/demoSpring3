@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -72,6 +73,12 @@ public class ComercialController {
 
         double media = comercialService.mediaPedidoComercial(id);
         model.addAttribute("mediaPedidosComercial", media);
+
+       Pedido pedidoMax = comercialService.pedidoMaximo(id);
+        model.addAttribute("pedidoMaximo", pedidoMax);
+
+        Pedido pedidoMin = comercialService.pedidoMinimo(id);
+        model.addAttribute("pedidoMinimo", pedidoMin);
 
 
         model.addAttribute("comercial", comercial);

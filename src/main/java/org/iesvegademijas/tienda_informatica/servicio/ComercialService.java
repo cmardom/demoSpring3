@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 import org.iesvegademijas.tienda_informatica.modelo.Comercial;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ComercialService {
@@ -47,6 +49,32 @@ Utiliza un DTO para transferir a la vista las estadísticas de inteligencia de p
         return total / numPedidos;
 
     }
+
+/*    public Pedido pedidoMaximo (int id_comercial){
+        List<Pedido> pedidos = mostrarPedidosComercial(id_comercial);
+        Pedido pedidoMax = pedidos.stream().max(Comparator.comparing(Double::valueOf)).collect();
+        return pedidoMax;
+    }*/
+
+    public List<Pedido> pedidosOrdenadosAscendente (int id_comercial){
+        List<Pedido> pedidos = mostrarPedidosComercial(id_comercial);
+        List<Pedido> pedidosOrdenados = pedidos.stream().sorted(Comparator.comparing(Pedido::getTotal)).collect(Collectors.toList());
+        return pedidosOrdenados;
+    }
+
+    public Pedido pedidoMaximo (int id_comercial){
+        List<Pedido> pedidosOrdenados = pedidosOrdenadosAscendente(id_comercial);
+        Pedido pedidoMax = pedidosOrdenados.getLast();
+        return pedidoMax;
+    }
+
+    public Pedido pedidoMinimo (int id_comercial){
+        List<Pedido> pedidosOrdenados = pedidosOrdenadosAscendente(id_comercial);
+        Pedido pedidoMin = pedidosOrdenados.getFirst();
+        return pedidoMin;
+    }
+
+
     public List<Comercial> listAll(){
         return comercialDAO.getAll();
     }

@@ -1,3 +1,15 @@
+.max {
+  background-color: limegreen;
+  color: black;
+  text-align: center;
+}
+
+.min {
+  background-color: yellow;
+  color: black;
+  text-align: center;
+}
+
 body {
   background: rgb(2, 0, 36);
   background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(121, 9, 121) 35%, rgb(0, 212, 255) 100%);
@@ -71,6 +83,14 @@ body #contenedora .bodyTable a {
 }
 body #contenedora .bodyTable a:hover {
   background-size: 0 3px, 100% 3px;
+}
+body #contenedora .leyenda {
+  width: 30%;
+  margin: 0 auto;
+  padding-top: 5%;
+}
+body #contenedora .leyenda h4 {
+  text-align: center;
 }
 body #contenedora .return {
   display: grid;

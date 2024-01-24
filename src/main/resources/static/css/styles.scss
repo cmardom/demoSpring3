@@ -1,4 +1,17 @@
 
+.max{
+  background-color: limegreen;
+  color: black;
+  text-align: center;
+}
+
+.min{
+  background-color: yellow;
+  color: black;
+  text-align: center;
+
+}
+
 
   body{
     background: rgb(2,0,36);
@@ -70,6 +83,8 @@
         &:hover {
           background-color: rgba(255,255,255,0.3);
         }
+
+
         .buttons{
           margin-right: 30px;
           form{
@@ -109,6 +124,16 @@
 
 
       }
+      .leyenda{
+        width: 30%;
+        margin: 0 auto;
+        padding-top: 5%;
+
+        h4{
+          text-align: center;
+        }
+      }
+
       .return{
         display: grid;
         grid-template-columns: 1fr;

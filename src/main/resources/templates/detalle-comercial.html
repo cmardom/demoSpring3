@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalle Comercial</title>
-    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link th:href="@{/css/styles.css}" rel="stylesheet" />
 
 </head>
@@ -24,6 +24,8 @@
         <div class="list-group-items fw-bold" th:text="#{txt_MediaPedidos}"></div>
 
 
+
+
     </div>
 
     <div class="bodyTable">
@@ -38,6 +40,7 @@
 
 
 
+
     </div>
 
     <div class="pedidos">
@@ -47,6 +50,7 @@
         </div>
 
         <!--/*Si hay pedidos, se muestra listado*/-->
+        <!--    <div class="bodyTable" th:each="comercial : ${listaComerciales}"> -->
         <div th:if="${pedidosFiltradosComercial}">
             <div class="theader">
                 <div class="list-group-items fw-bold" th:text="#{txt_IDPedido}"></div>
@@ -56,9 +60,10 @@
                 <div class="list-group-items fw-bold" th:text="#{txt_IDComercial}"></div>
             </div>
 
+            <!--th:attr="class=${condition ? 'base condition-true' : 'base condition-false'}" -->
             <div class="bodyTable" th:each="pedido : ${pedidosFiltradosComercial}">
                 <div class="list-group-items fw-bold" th:text="${pedido.id}"></div>
-                <div class="list-group-items" th:text="${pedido.total}"></div>
+                <div class="list-group-items" th:text="${pedido.total}" th:class="${pedido.total == pedidoMaximo.total} ? max : visible"></div>
                 <div class="list-group-items" th:text="${pedido.fecha}"></div>
                 <a class="btn" th:href="@{/clientes/__${pedido.id_cliente}__}" th:text="${pedido.id_cliente}"></a>
                 <div class="list-group-items" th:text="${pedido.id_comercial}"></div>
@@ -85,6 +90,12 @@
         </form>
     </div>-->
 
+    <div class="leyenda">
+        <h4>Leyenda de colores</h4>
+        <p class="max">Pedido máximo</p>
+        <p class="min">Pedido mínimo</p>
+
+    </div>
     <div class="return">
 
         <form action="/comerciales" >
