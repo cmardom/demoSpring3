@@ -1,5 +1,6 @@
 package org.iesvegademijas.tienda_informatica.servicio;
 
+import org.iesvegademijas.tienda_informatica.dao.ClienteDAO;
 import org.iesvegademijas.tienda_informatica.dao.ComercialDAO;
 import org.iesvegademijas.tienda_informatica.dao.ComercialDAOImpl;
 import org.iesvegademijas.tienda_informatica.dao.PedidoDAO;
@@ -25,6 +26,8 @@ public class ComercialService {
     @Autowired
     private PedidoDAO pedidoDAO;
 
+    @Autowired
+    private ClienteDAO clienteDAO;
 
 
 
@@ -32,8 +35,7 @@ public class ComercialService {
         return pedidoDAO.mostrarPedidosComercial(id_comercial);
 
     }
-/*Añade las estadísticas de total y media de pedidos del comercial en su detalle.
-Utiliza un DTO para transferir a la vista las estadísticas de inteligencia de pedidos*/
+
     public double totalPedidoComercial (int id_comercial){
         List<Pedido> pedidos = mostrarPedidosComercial(id_comercial);
 
@@ -50,11 +52,6 @@ Utiliza un DTO para transferir a la vista las estadísticas de inteligencia de p
 
     }
 
-/*    public Pedido pedidoMaximo (int id_comercial){
-        List<Pedido> pedidos = mostrarPedidosComercial(id_comercial);
-        Pedido pedidoMax = pedidos.stream().max(Comparator.comparing(Double::valueOf)).collect();
-        return pedidoMax;
-    }*/
 
     public List<Pedido> pedidosOrdenadosAscendente (int id_comercial){
         List<Pedido> pedidos = mostrarPedidosComercial(id_comercial);
