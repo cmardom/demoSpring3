@@ -61,9 +61,9 @@
             </div>
 
             <!--th:attr="class=${condition ? 'base condition-true' : 'base condition-false'}" -->
-            <div class="bodyTable" th:each="pedido : ${pedidosFiltradosComercial}">
+            <div class="bodyTable" th:each="pedido : ${pedidosFiltradosComercial}" th:classappend="${pedido.total == pedidoMaximo.total} ? 'max' : (${pedido.total == pedidoMinimo.total} ? 'min' : '')">
                 <div class="list-group-items fw-bold" th:text="${pedido.id}"></div>
-                <div class="list-group-items" th:text="${pedido.total}" th:class="${pedido.total == pedidoMaximo.total} ? max : visible"></div>
+                <div class="list-group-items" th:text="${pedido.total}" ></div>
                 <div class="list-group-items" th:text="${pedido.fecha}"></div>
                 <a class="btn" th:href="@{/clientes/__${pedido.id_cliente}__}" th:text="${pedido.id_cliente}"></a>
                 <div class="list-group-items" th:text="${pedido.id_comercial}"></div>

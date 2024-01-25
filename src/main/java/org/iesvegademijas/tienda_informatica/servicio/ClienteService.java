@@ -7,8 +7,11 @@ import org.iesvegademijas.tienda_informatica.modelo.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 
@@ -20,12 +23,34 @@ public class ClienteService {
     @Autowired
     private PedidoDAO pedidoDAO;
 
+    @Autowired
+    private PedidoService pedidoService;
 
 
     public List<Pedido> mostrarPedidosCliente(int id_cliente) {
         return pedidoDAO.mostrarPedidosCliente(id_cliente);
 
     }
+
+    public double totalPedidoCliente (int id_cliente){
+        List <Pedido> pedidos = mostrarPedidosCliente(id_cliente);
+        double resultado = pedidos.stream().map(p->p.getTotal()).reduce(0.0, Double::sum).doubleValue();
+        return resultado;
+    }
+
+    public Cliente obtenerClientePorPedido (Pedido pedido){
+        int idClienteEnPedido = pedido.getId_cliente();
+        return one(idClienteEnPedido);
+    }
+
+
+    public List<Pedido> pedidosOrdenadosAscendenteUnCliente (int id_cliente){
+        List<Pedido> pedidos = mostrarPedidosCliente(id_cliente);
+        List<Pedido> pedidosOrdenados = pedidos.stream().sorted(Comparator.comparing(Pedido::getTotal)).collect(Collectors.toList());
+        return pedidosOrdenados;
+    }
+
+
 
     public List<Cliente> listAll(){
         return clienteDAO.getAll();

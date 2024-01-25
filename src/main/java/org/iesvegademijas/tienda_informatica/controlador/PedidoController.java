@@ -1,6 +1,8 @@
 package org.iesvegademijas.tienda_informatica.controlador;
 
+import org.iesvegademijas.tienda_informatica.modelo.Cliente;
 import org.iesvegademijas.tienda_informatica.modelo.Pedido;
+import org.iesvegademijas.tienda_informatica.servicio.ClienteService;
 import org.iesvegademijas.tienda_informatica.servicio.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,10 +21,34 @@ public class PedidoController {
     @Autowired
     private PedidoService pedidoService;
 
+    @Autowired
+    private ClienteService clienteService;
+
     @GetMapping("/pedidos")
     public String listarPedidos (Model model){
         List<Pedido> listAllPe = pedidoService.listAll();
         model.addAttribute("listaPedidos", listAllPe);
+        int[] IDsDeClientesEnPedidos = new int[listAllPe.size()];
+      // List<Pedido> pedidosClientes = clienteService.mostrarPedidosCliente()
+
+       /* for (int i = 0; i < listAllPe.size(); i++) {
+            IDsDeClientesEnPedidos[i] = listAllPe.get(i).getId_cliente();
+            pedidosClientes.set(i,clienteService.pedidosOrdenadosAscendente(IDsDeClientesEnPedidos[i]));
+
+        }*/
+
+        //1. Obtener listado de clientes
+            //array de IDs de clientes
+       /* for (int i = 0; i < listAllPe.size(); i++) {
+            IDsDeClientesEnPedidos[i] = listAllPe.get(i).getId_cliente();}
+
+        List<Cliente> clientes = clienteService.pedidosOrdenadosAscendente()*/
+
+        //List<Cliente> clientes = clienteService.
+
+        //2. Ordenar listado de clientes
+
+
         return "pedidos";
     }
 

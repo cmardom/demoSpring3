@@ -1,7 +1,9 @@
 package org.iesvegademijas.tienda_informatica.servicio;
 
+import org.iesvegademijas.tienda_informatica.dao.ClienteDAO;
 import org.iesvegademijas.tienda_informatica.dao.ComercialDAO;
 import org.iesvegademijas.tienda_informatica.dao.PedidoDAO;
+import org.iesvegademijas.tienda_informatica.modelo.Cliente;
 import org.iesvegademijas.tienda_informatica.modelo.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ public class PedidoService {
 
     @Autowired
     private PedidoDAO pedidoDAO;
+
+    @Autowired
+    private ClienteDAO clienteDAO;
 
 
     public List<Pedido> listAll(){
@@ -28,4 +33,13 @@ public class PedidoService {
     public void newPedido(Pedido pedido){ pedidoDAO.create(pedido);}
     public void replacePedido(Pedido pedido){ pedidoDAO.update(pedido);}
     public void deletePedido (int id) {pedidoDAO.delete(id);}
+
+/*    public List<Cliente> clientesOrdenadosPorTotalPedido(){
+        List<Cliente> clientes = clienteDAO.getAll();
+
+        List<Pedido> pedidos = pedidoDAO.getAll();
+
+        List<Pedido> pedidosOrdenados;
+
+    }*/
 }
