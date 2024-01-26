@@ -8,8 +8,6 @@ public class Cliente {
     private String ciudad;
     private int categoria;
 
-    private double cuantiaTotalPedidos;
-
 
     public Cliente(int id, String nombre, String apellido1, String apellido2, String ciudad, int categoria) {
         this.id = id;
@@ -20,15 +18,6 @@ public class Cliente {
         this.categoria = categoria;
     }
 
-    public Cliente(int id, String nombre, String apellido1, String apellido2, String ciudad, int categoria, double cuantiaTotalPedidos) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido1 = apellido1;
-        this.apellido2 = apellido2;
-        this.ciudad = ciudad;
-        this.categoria = categoria;
-        this.cuantiaTotalPedidos = cuantiaTotalPedidos;
-    }
 
     public Cliente() {
     }
@@ -79,14 +68,6 @@ public class Cliente {
 
     public void setCategoria(int categoria) {
         this.categoria = categoria;
-    }
-
-    public double getCuantiaTotalPedidos() {
-        return cuantiaTotalPedidos;
-    }
-
-    public void setCuantiaTotalPedidos(double cuantiaTotalPedidos) {
-        this.cuantiaTotalPedidos = cuantiaTotalPedidos;
     }
 
     @Override

@@ -52,14 +52,13 @@ public class ComercialController {
         List<Cliente> listaCli = clienteService.listAll();
 
         //para poder mostrar un mensaje si no hay pedidos
-        Cliente clienteDelPedido = null;
         if (pedidosFiltradosComercial.isEmpty()) {
             pedidosFiltradosComercial = null;
         } else {
             /*recorrer la lista que enlazara con los clientes de los pedidos de ese comercial*/
             for (int i = 0; i < idsQueSalenEnLaListaDePedidos.size(); i++) {
                 if (idsQueSalenEnLaListaDePedidos.get(i) == listaCli.get(i).getId()) {
-                    clienteDelPedido = clienteService.one(idsQueSalenEnLaListaDePedidos.get(i));
+                    Cliente clienteDelPedido = clienteService.one(idsQueSalenEnLaListaDePedidos.get(i));
                     model.addAttribute("clienteDelPedido", clienteDelPedido);
                 }
             }
@@ -81,8 +80,8 @@ public class ComercialController {
         Pedido pedidoMin = comercialService.pedidoMinimo(id);
         model.addAttribute("pedidoMinimo", pedidoMin);
 
-        List<Cliente> clientesOrdenados = comercialService.clientesYTotalDelComercialOrdenados(clienteDelPedido.getId());
-        model.addAttribute("clientesDelComercialOrdenados", clientesOrdenados);
+        /*List<Cliente> clientesOrdenados = comercialService.clientesYTotalDelComercialOrdenados(clienteDelPedido.getId());
+        model.addAttribute("clientesDelComercialOrdenados", clientesOrdenados);*/
 
 
         model.addAttribute("comercial", comercial);

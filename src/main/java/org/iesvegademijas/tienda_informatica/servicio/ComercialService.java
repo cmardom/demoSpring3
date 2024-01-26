@@ -41,13 +41,13 @@ public class ComercialService {
         return pedidoDAO.mostrarPedidosCliente(id_cliente);
     }
 
-    public List<Cliente> clientesYTotalDelComercialOrdenados (int id_cliente){
+   /* public List<Cliente> clientesYTotalDelComercialOrdenados (int id_cliente){
         List<Cliente> clientes = clienteDAO.getAll();
         List<Pedido> pedidos = mostrarPedidosCliente(id_cliente);
         //double resultado = pedidos.stream().map(Pedido::getTotal).reduce(0.0, Double::sum);
 
 
-        // Calcular la cuantía total de los pedidos para cada cliente
+        // cuantía total de los pedidos para cada cliente
         List<Cliente> clientesConTotal = clientes.stream()
                 .map(cliente -> {
                     double totalPedidos = pedidos.stream()
@@ -59,14 +59,14 @@ public class ComercialService {
                 })
                 .collect(Collectors.toList());
 
-        // Ordenar la lista de clientes por la cuantía total de los pedidos de forma ascendente
+        // lista de clientes por cuantía total de pedidos (ascendente)
         List<Cliente> clientesOrdenados = clientesConTotal.stream()
                 .sorted(Comparator.comparingDouble(Cliente::getCuantiaTotalPedidos))
                 .collect(Collectors.toList());
 
         return clientesOrdenados;
 
-    }
+    }*/
 
     public double totalPedidoCliente (int id_cliente){
         List<Pedido> pedidos = mostrarPedidosCliente(id_cliente);
