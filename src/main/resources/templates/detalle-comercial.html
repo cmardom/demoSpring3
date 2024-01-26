@@ -23,9 +23,6 @@
         <div class="list-group-items fw-bold" th:text="#{txt_TotalPedidos}"></div>
         <div class="list-group-items fw-bold" th:text="#{txt_MediaPedidos}"></div>
 
-
-
-
     </div>
 
     <div class="bodyTable">
@@ -96,6 +93,56 @@
         <p class="min">Pedido mínimo</p>
 
     </div>
+
+    <!-- -->
+    <div class="pedidos">
+
+        <div class="fondoTitulo">
+            <h3 class="fw-bold" th:text="#{h1_clientes}"></h3>
+        </div>
+
+        <!--/*Si hay clientes, se muestra listado*/-->
+        <!--    <div class="bodyTable" th:each="comercial : ${listaComerciales}"> -->
+        <div th:if="${clientesDelComercialOrdenados}">
+            <div class="theader">
+                <div class="list-group-items fw-bold" th:text="#{txt_IDCliente}"></div>
+                <div class="list-group-items fw-bold" th:text="#{txt_Total}"></div>
+
+            </div>
+
+            <!--th:attr="class=${condition ? 'base condition-true' : 'base condition-false'}" -->
+            <div th:each="cliente : ${clientesDelComercialOrdenados}">
+                <div th:if="${cliente.getCuantiaTotalPedidos() > 0}" class="bodyTable">
+                     <div class="list-group-items fw-bold" th:text="${cliente.id}"></div>
+                    <div class="list-group-items" th:text="${cliente.cuantiaTotalPedidos}" ></div>
+                </div>
+                <div th:unless="${cliente.getCuantiaTotalPedidos() > 0}">
+            </div>
+        </div>
+        <!--/* Si no, mensaje*/-->
+        <div th:unless="${clientesDelComercialOrdenados}">
+
+
+            <div class="theader">
+                <div class="list-group-items fw-bold" th:text="#{msg_noPedidos}"></div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <!-- -->
+
+
+
+
+
+
+
+
     <div class="return">
 
         <form action="/comerciales" >

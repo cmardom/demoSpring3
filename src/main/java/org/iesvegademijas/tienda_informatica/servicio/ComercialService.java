@@ -4,6 +4,7 @@ import org.iesvegademijas.tienda_informatica.dao.ClienteDAO;
 import org.iesvegademijas.tienda_informatica.dao.ComercialDAO;
 import org.iesvegademijas.tienda_informatica.dao.ComercialDAOImpl;
 import org.iesvegademijas.tienda_informatica.dao.PedidoDAO;
+import org.iesvegademijas.tienda_informatica.modelo.Cliente;
 import org.iesvegademijas.tienda_informatica.modelo.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,43 @@ public class ComercialService {
     public List<Pedido> mostrarPedidosComercial(int id_comercial) {
         return pedidoDAO.mostrarPedidosComercial(id_comercial);
 
+    }
+
+    public List<Pedido> mostrarPedidosCliente (int id_cliente){
+        return pedidoDAO.mostrarPedidosCliente(id_cliente);
+    }
+
+    public List<Cliente> clientesYTotalDelComercialOrdenados (int id_cliente){
+        List<Cliente> clientes = clienteDAO.getAll();
+        List<Pedido> pedidos = mostrarPedidosCliente(id_cliente);
+        //double resultado = pedidos.stream().map(Pedido::getTotal).reduce(0.0, Double::sum);
+
+
+        // Calcular la cuantía total de los pedidos para cada cliente
+        List<Cliente> clientesConTotal = clientes.stream()
+                .map(cliente -> {
+                    double totalPedidos = pedidos.stream()
+                            .filter(pedido -> pedido.getId_cliente() == cliente.getId())
+                            .mapToDouble(Pedido::getTotal)
+                            .sum();
+                    cliente.setCuantiaTotalPedidos(totalPedidos);
+                    return cliente;
+                })
+                .collect(Collectors.toList());
+
+        // Ordenar la lista de clientes por la cuantía total de los pedidos de forma ascendente
+        List<Cliente> clientesOrdenados = clientesConTotal.stream()
+                .sorted(Comparator.comparingDouble(Cliente::getCuantiaTotalPedidos))
+                .collect(Collectors.toList());
+
+        return clientesOrdenados;
+
+    }
+
+    public double totalPedidoCliente (int id_cliente){
+        List<Pedido> pedidos = mostrarPedidosCliente(id_cliente);
+        double resultado = pedidos.stream().map(p -> p.getTotal()).reduce(0.0, Double::sum).doubleValue();
+        return resultado;
     }
 
     public double totalPedidoComercial (int id_comercial){

@@ -33,13 +33,5 @@ public class PedidoService {
     public void newPedido(Pedido pedido){ pedidoDAO.create(pedido);}
     public void replacePedido(Pedido pedido){ pedidoDAO.update(pedido);}
     public void deletePedido (int id) {pedidoDAO.delete(id);}
-
-/*    public List<Cliente> clientesOrdenadosPorTotalPedido(){
-        List<Cliente> clientes = clienteDAO.getAll();
-
-        List<Pedido> pedidos = pedidoDAO.getAll();
-
-        List<Pedido> pedidosOrdenados;
-
-    }*/
+    
 }
