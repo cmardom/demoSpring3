@@ -22,8 +22,6 @@ public class ComercialService {
     @Autowired
     private ComercialDAO comercialDAO;
 
-
-    /*PRUEBA*/
     @Autowired
     private PedidoDAO pedidoDAO;
 
@@ -99,24 +97,49 @@ public class ComercialService {
 
     public Pedido pedidoMaximo (int id_comercial){
         List<Pedido> pedidosOrdenados = pedidosOrdenadosAscendente(id_comercial);
-        Pedido pedidoMax = pedidosOrdenados.getLast();
-        return pedidoMax;
+        if (!pedidosOrdenados.isEmpty()) {
+            Pedido pedidoMax = pedidosOrdenados.get(pedidosOrdenados.size()-1);
+            return pedidoMax;
+
+        } else {
+            return null;
+        }
+
     }
 
     public Pedido pedidoMinimo (int id_comercial){
         List<Pedido> pedidosOrdenados = pedidosOrdenadosAscendente(id_comercial);
-        Pedido pedidoMin = pedidosOrdenados.getFirst();
-        return pedidoMin;
+        if (!pedidosOrdenados.isEmpty()){
+            Pedido pedidoMin = pedidosOrdenados.get(0);
+            return pedidoMin;
+        } else {
+            return null;
+        }
+
     }
 
 
     public List<Comercial> listAll(){
         return comercialDAO.getAll();
     }
+    public List<Cliente> listAllCli(){
+        return clienteDAO.getAll();
+    }
 
     public Comercial one (Integer id){
         /*mover aqui la logica de pedido u otro metodo para las listas*/
         Optional<Comercial> optCom = comercialDAO.find(id);
+
+        if (optCom.isPresent()){
+            return optCom.get();
+        } else {
+            return null;
+        }
+    }
+
+    public Cliente oneCli (Integer id){
+        /*mover aqui la logica de pedido u otro metodo para las listas*/
+        Optional<Cliente> optCom = clienteDAO.find(id);
 
         if (optCom.isPresent()){
             return optCom.get();

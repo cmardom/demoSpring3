@@ -24,8 +24,8 @@ public class ComercialController {
     @Autowired
     private ComercialService comercialService;
 
-    @Autowired
-    private ClienteService clienteService;
+   /* @Autowired
+    private ClienteService clienteService;*/
 
 
 
@@ -49,7 +49,7 @@ public class ComercialController {
 
         List<Integer> idsQueSalenEnLaListaDePedidos = pedidosFiltradosComercial.stream().map(Pedido::getId_cliente).collect(Collectors.toList());
 
-        List<Cliente> listaCli = clienteService.listAll();
+        List<Cliente> listaCli = comercialService.listAllCli();
 
         //para poder mostrar un mensaje si no hay pedidos
         if (pedidosFiltradosComercial.isEmpty()) {
@@ -58,7 +58,7 @@ public class ComercialController {
             /*recorrer la lista que enlazara con los clientes de los pedidos de ese comercial*/
             for (int i = 0; i < idsQueSalenEnLaListaDePedidos.size(); i++) {
                 if (idsQueSalenEnLaListaDePedidos.get(i) == listaCli.get(i).getId()) {
-                    Cliente clienteDelPedido = clienteService.one(idsQueSalenEnLaListaDePedidos.get(i));
+                    Cliente clienteDelPedido = comercialService.oneCli(idsQueSalenEnLaListaDePedidos.get(i));
                     model.addAttribute("clienteDelPedido", clienteDelPedido);
                 }
             }

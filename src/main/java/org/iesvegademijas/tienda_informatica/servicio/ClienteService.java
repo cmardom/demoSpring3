@@ -1,8 +1,10 @@
 package org.iesvegademijas.tienda_informatica.servicio;
 
 import org.iesvegademijas.tienda_informatica.dao.ClienteDAO;
+import org.iesvegademijas.tienda_informatica.dao.ComercialDAO;
 import org.iesvegademijas.tienda_informatica.dao.PedidoDAO;
 import org.iesvegademijas.tienda_informatica.modelo.Cliente;
+import org.iesvegademijas.tienda_informatica.modelo.Comercial;
 import org.iesvegademijas.tienda_informatica.modelo.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,11 +26,16 @@ public class ClienteService {
     private PedidoDAO pedidoDAO;
 
     @Autowired
-    private PedidoService pedidoService;
+    private ComercialDAO comercialDAO;
 
 
     public List<Pedido> mostrarPedidosCliente(int id_cliente) {
         return pedidoDAO.mostrarPedidosCliente(id_cliente);
+
+    }
+
+    public List<Pedido> mostrarPedidosComercial(int id_comercial) {
+        return pedidoDAO.mostrarPedidosComercial(id_comercial);
 
     }
 
@@ -67,6 +74,17 @@ public class ClienteService {
 
     }
 
+    public Comercial oneCom (Integer id2){
+        Optional<Comercial> optCli = comercialDAO.find(id2);
+
+        if (optCli.isPresent()){
+            return optCli.get();
+        } else {
+            return null;
+        }
+
+    }
+
     public void newCliente(Cliente cliente){
         clienteDAO.create(cliente);
     }
@@ -78,5 +96,7 @@ public class ClienteService {
     public void deletecliente(int id){
         clienteDAO.delete(id);
     }
+
+
 
 }

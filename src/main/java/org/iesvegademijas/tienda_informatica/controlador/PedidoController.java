@@ -21,9 +21,6 @@ public class PedidoController {
     @Autowired
     private PedidoService pedidoService;
 
-    @Autowired
-    private ClienteService clienteService;
-
     @GetMapping("/pedidos")
     public String listarPedidos (Model model){
         List<Pedido> listAllPe = pedidoService.listAll();

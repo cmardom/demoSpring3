@@ -23,9 +23,6 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    @Autowired
-    private ComercialService comercialService;
-
     @GetMapping("/clientes")
     public String listarClientes (Model model){
         List<Cliente> listAllCli = clienteService.listAll();
@@ -49,9 +46,9 @@ public class ClienteController {
         model.addAttribute("pedidosFiltradosCliente", pedidosFiltradosCliente);
 
 
-        Comercial comercial = comercialService.one(id);
+        Comercial comercial = clienteService.oneCom(id);
         /*listar pedidos de comercial*/
-        List<Pedido> pedidosDelComercial = comercialService.mostrarPedidosComercial(id);
+        List<Pedido> pedidosDelComercial = clienteService.mostrarPedidosComercial(id);
         //int idComercial = comercial.getId();
         List<Pedido> pedidosDelClienteConComercial = pedidosDelComercial.stream().filter(pedido -> pedido.getId_comercial() == idCliente).collect(Collectors.toList());
 
