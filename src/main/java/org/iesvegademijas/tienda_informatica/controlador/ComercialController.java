@@ -16,10 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -68,27 +65,40 @@ public class ComercialController {
                     Cliente clienteDelPedido = comercialService.oneCli(idsQueSalenEnLaListaDePedidos.get(i));
                     model.addAttribute("clienteDelPedido", clienteDelPedido);
 
-                    //ClienteDTO clienteConTotal= comercialService.totalPedidoCliente(listaCli.get(i).getId());
-                    clientesConTotales.add(comercialService.totalPedidoCliente(clienteDelPedido.getId()));
+                    clientesConTotales= comercialService.totalPedidoCliente(clienteDelPedido.getId());
+                    //clientesConTotales.add(comercialService.totalPedidoCliente(clienteDelPedido.getId()));
                     //clientesConTotales.add(clienteConTotal);
 
 
 
 
-                    clientesConTotalesOrdenados = clientesConTotales.stream()
-                            .sorted(Comparator.comparingDouble(ClienteDTO::getTotalPedido))
-                            .collect(Collectors.toList());
 
-                    model.addAttribute("clientesConTotalesOrdenados", clientesConTotalesOrdenados);
 
 
 
                 }
             }
 
+            clientesConTotalesOrdenados = clientesConTotales.stream()
+                    .sorted(Comparator.comparingDouble(ClienteDTO::getTotalPedido))
+                    .collect(Collectors.toList());
+
+            model.addAttribute("clientesConTotalesOrdenados", clientesConTotalesOrdenados);
+
 
         }
         model.addAttribute("pedidosFiltradosComercial", pedidosFiltradosComercial);
+
+        for (int i = 0; i < Objects.requireNonNull(pedidosFiltradosComercial).size(); i++){
+            if (pedidosFiltradosComercial.get(0).getId_cliente() == listaCli.get(0).getId()){
+                List<ClienteDTO> clientesConTotales2 = comercialService.totalPedidoCliente(pedidosFiltradosComercial.get(0).getId_cliente());
+                List<ClienteDTO> clientesConTotalesOrdenados2 = clientesConTotales.stream()
+                        .sorted(Comparator.comparingDouble(ClienteDTO::getTotalPedido))
+                        .collect(Collectors.toList());
+
+                model.addAttribute("clientesConTotalesOrdenados2", clientesConTotalesOrdenados2);
+            }
+        }
 
 
         double total = comercialService.totalPedidoComercial(id);

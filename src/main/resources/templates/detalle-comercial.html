@@ -101,7 +101,6 @@
             <h3 class="fw-bold" th:text="#{h1_clientes}"></h3>
         </div>
 
-        <!--/*Si hay clientes, se muestra listado*/-->
         <!--    <div class="bodyTable" th:each="comercial : ${listaComerciales}"> -->
         <div>
             <div class="theader">
@@ -117,7 +116,7 @@
 
             </div>
 
-            <div class="bodyTable" th:each="clienteTotal : ${clientesConTotalesOrdenados}">
+            <div class="bodyTable" th:each="clienteTotal : ${clientesConTotalesOrdenados2}">
                 <div class="list-group-items fw-bold" th:text="${clienteTotal.id}"></div>
                 <div class="list-group-items" th:text="${clienteTotal.nombre}"></div>
                 <div class="list-group-items" th:text="${clienteTotal.apellido1}"></div>
@@ -127,18 +126,6 @@
                 <div class="list-group-items" th:text="${clienteTotal.totalPedido}"></div>
 
             </div>
-
-            <!--th:attr="class=${condition ? 'base condition-true' : 'base condition-false'}" -->
-           <!-- <div th:each="cliente : ${clientesDelComercialOrdenados}">
-                <div th:if="${cliente.getCuantiaTotalPedidos() > 0}" class="bodyTable">
-                     <div class="list-group-items fw-bold" th:text="${cliente.id}"></div>
-                    <div class="list-group-items" th:text="${cliente.cuantiaTotalPedidos}" ></div>
-                </div>
-                <div th:unless="${cliente.getCuantiaTotalPedidos() > 0}">
-            </div>
-        </div>-->
-
-
     </div>
 
 
