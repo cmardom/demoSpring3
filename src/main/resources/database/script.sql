@@ -58,16 +58,8 @@ INSERT INTO cliente (nombre, apellido1, apellido2, ciudad, categoria) VALUES
                                                                           ('Carlos', 'García', 'Martín', 'Sevilla', 2),
                                                                           ('Sergio', 'Jiménez', 'Alonso', 'Bilbao', 2),
                                                                           ('Elena', 'Ruiz', 'Fernández', 'Madrid', 1),
-                                                                          ('Luis', 'Fernández', 'Gómez', 'Barcelona', 3),
-                                                                          ('María', 'Fernández', 'Gómez', 'Madrid', 1),
-                                                                          ('Javier', 'Ruiz', 'Santos', 'Barcelona', 2),
-                                                                          ('Luisa', 'García', 'Fernández', 'Sevilla', 1),
-                                                                          ('Pedro', 'Gómez', 'Martínez', 'Valencia', 3),
-                                                                          ('Carmen', 'Martínez', 'López', 'Granada', 3),
-                                                                          ('Pablo', 'Sánchez', 'Gómez', 'Barcelona', 2),
-                                                                          ('Elena', 'Gómez', 'Martín', 'Sevilla', 2),
-                                                                          ('Raúl', 'López', 'Martínez', 'Bilbao', 2),
-                                                                          ('Isabel', 'González', 'Fernández', 'Madrid', 1);
+                                                                          ('Luis', 'Fernández', 'Gómez', 'Barcelona', 3);
+
 
 
 -- Inserciones para la tabla comercial
@@ -85,8 +77,6 @@ INSERT INTO comercial (nombre, apellido1, apellido2, comision) VALUES
 
 
 -- Inserciones para la tabla pedido
--- Nota: Se asume que los ids de cliente y comercial existen.
--- Ajusta los ids según los datos reales de tus tablas.
 INSERT INTO pedido (total, fecha, id_cliente, id_comercial) VALUES
                                                                 (300.00, '2024-01-10', 1, 1),
                                                                 (450.50, '2024-01-11', 2, 2),

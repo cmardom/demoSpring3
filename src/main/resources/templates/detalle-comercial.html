@@ -103,18 +103,30 @@
 
         <!--/*Si hay clientes, se muestra listado*/-->
         <!--    <div class="bodyTable" th:each="comercial : ${listaComerciales}"> -->
-        <div th:if="${clienteConTotal}">
+        <div>
             <div class="theader">
-                <div class="list-group-items fw-bold" th:text="#{txt_IDCliente}"></div>
-                <div class="list-group-items fw-bold" th:text="#{txt_Total}"></div>
+                <div class="list-group-items fw-bold" th:text="#{txt_ID}"></div>
+                <div class="list-group-items fw-bold" th:text="#{txt_Nombre}"></div>
+                <div class="list-group-items fw-bold" th:text="#{txt_Apellido1}"></div>
+                <div class="list-group-items fw-bold" th:text="#{txt_Apellido2}"></div>
+                <div class="list-group-items fw-bold" th:text="#{txt_Ciudad}"></div>
+                <div class="list-group-items fw-bold" th:text="#{txt_Categoría}"></div>
+                <div class="list-group-items fw-bold" th:text="TOTAL"></div>
+
+
 
             </div>
 
-            <div class="tbody">
-                <div class="list-group-items fw-bold" th:text="${clienteConTotal.id}"></div>
-                <div class="list-group-items" th:text="${clienteConTotal.totalPedido}" ></div>
+            <div class="bodyTable" th:each="clienteTotal : ${clientesConTotalesOrdenados}">
+                <div class="list-group-items fw-bold" th:text="${clienteTotal.id}"></div>
+                <div class="list-group-items" th:text="${clienteTotal.nombre}"></div>
+                <div class="list-group-items" th:text="${clienteTotal.apellido1}"></div>
+                <div class="list-group-items" th:text="${clienteTotal.apellido2}"></div>
+                <div class="list-group-items" th:text="${clienteTotal.ciudad}"></div>
+                <div class="list-group-items" th:text="${clienteTotal.categoria}"></div>
+                <div class="list-group-items" th:text="${clienteTotal.totalPedido}"></div>
 
-            <div>
+            </div>
 
             <!--th:attr="class=${condition ? 'base condition-true' : 'base condition-false'}" -->
            <!-- <div th:each="cliente : ${clientesDelComercialOrdenados}">
@@ -127,29 +139,7 @@
         </div>-->
 
 
-
-        <!--/* Si no, mensaje*/-->
-        <div th:unless="${clientesDelComercialOrdenados}">
-
-
-            <div class="theader">
-                <div class="list-group-items fw-bold" th:text="#{msg_noPedidos}"></div>
-            </div>
-        </div>
-
-
-
     </div>
-
-
-
-    <!-- -->
-
-
-
-
-
-
 
 
     <div class="return">

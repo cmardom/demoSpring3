@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -51,6 +53,10 @@ public class ComercialController {
         List<Integer> idsQueSalenEnLaListaDePedidos = pedidosFiltradosComercial.stream().map(Pedido::getId_cliente).collect(Collectors.toList());
 
         List<Cliente> listaCli = comercialService.listAllCli();
+        //ClienteDTO clienteTotal = new ClienteDTO();
+        List<ClienteDTO> clientesConTotales = new ArrayList<>();
+        List<ClienteDTO> clientesConTotalesOrdenados = new ArrayList<>();
+
 
         //para poder mostrar un mensaje si no hay pedidos
         if (pedidosFiltradosComercial.isEmpty()) {
@@ -61,8 +67,25 @@ public class ComercialController {
                 if (idsQueSalenEnLaListaDePedidos.get(i) == listaCli.get(i).getId()) {
                     Cliente clienteDelPedido = comercialService.oneCli(idsQueSalenEnLaListaDePedidos.get(i));
                     model.addAttribute("clienteDelPedido", clienteDelPedido);
+
+                    //ClienteDTO clienteConTotal= comercialService.totalPedidoCliente(listaCli.get(i).getId());
+                    clientesConTotales.add(comercialService.totalPedidoCliente(clienteDelPedido.getId()));
+                    //clientesConTotales.add(clienteConTotal);
+
+
+
+
+                    clientesConTotalesOrdenados = clientesConTotales.stream()
+                            .sorted(Comparator.comparingDouble(ClienteDTO::getTotalPedido))
+                            .collect(Collectors.toList());
+
+                    model.addAttribute("clientesConTotalesOrdenados", clientesConTotalesOrdenados);
+
+
+
                 }
             }
+
 
         }
         model.addAttribute("pedidosFiltradosComercial", pedidosFiltradosComercial);
@@ -85,8 +108,8 @@ public class ComercialController {
         model.addAttribute("clientesDelComercialOrdenados", clientesOrdenados);*/
 
 
-        ClienteDTO clienteConTotal = comercialService.totalPedidoCliente(listaCli.get(0).getId());
-        model.addAttribute("clienteConTotal", clienteConTotal);
+        //ClienteDTO clienteConTotal = comercialService.totalPedidoCliente(listaCli.get(0).getId(), comercial.getId());
+        //model.addAttribute("clienteConTotal", clienteConTotal);
 
         model.addAttribute("comercial", comercial);
         return "detalle-comercial";

@@ -69,7 +69,16 @@ public class ComercialService {
 
     public ClienteDTO totalPedidoCliente (int id_cliente){
         List<Pedido> pedidos = mostrarPedidosCliente(id_cliente);
-        double resultado = pedidos.stream().map(p -> p.getTotal()).reduce(0.0, Double::sum).doubleValue();
+        List<Pedido> pedidosComercial = new ArrayList<>();
+
+        for(int i = 0; i < pedidos.size(); i++){
+            pedidosComercial = mostrarPedidosComercial(pedidos.get(i).getId_comercial());
+
+
+        }
+
+
+        double resultado = pedidosComercial.stream().map(Pedido::getTotal).reduce(0.0, Double::sum);
 
         ClienteDTO clienteDTO = new ClienteDTO();
         clienteDTO.setId(oneCli(id_cliente).getId());
