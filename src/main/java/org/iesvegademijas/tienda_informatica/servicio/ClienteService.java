@@ -3,6 +3,7 @@ package org.iesvegademijas.tienda_informatica.servicio;
 import org.iesvegademijas.tienda_informatica.dao.ClienteDAO;
 import org.iesvegademijas.tienda_informatica.dao.ComercialDAO;
 import org.iesvegademijas.tienda_informatica.dao.PedidoDAO;
+import org.iesvegademijas.tienda_informatica.dto.ClienteDTO;
 import org.iesvegademijas.tienda_informatica.modelo.Cliente;
 import org.iesvegademijas.tienda_informatica.modelo.Comercial;
 import org.iesvegademijas.tienda_informatica.modelo.Pedido;
@@ -39,10 +40,22 @@ public class ClienteService {
 
     }
 
-    public double totalPedidoCliente (int id_cliente){
+    public ClienteDTO clienteConTotal (int id_cliente){
         List <Pedido> pedidos = mostrarPedidosCliente(id_cliente);
         double resultado = pedidos.stream().map(p->p.getTotal()).reduce(0.0, Double::sum).doubleValue();
-        return resultado;
+
+        ClienteDTO clienteDTO = new ClienteDTO();
+        clienteDTO.setId(one(id_cliente).getId());
+        clienteDTO.setNombre(one(id_cliente).getNombre());
+        clienteDTO.setApellido1(one(id_cliente).getApellido1());
+        clienteDTO.setApellido2(one(id_cliente).getApellido2());
+        clienteDTO.setCiudad(one(id_cliente).getCiudad());
+        clienteDTO.setCategoria(one(id_cliente).getCategoria());
+        clienteDTO.setTotalPedido(resultado);
+        return clienteDTO;
+
+
+
     }
 
     public Cliente obtenerClientePorPedido (Pedido pedido){

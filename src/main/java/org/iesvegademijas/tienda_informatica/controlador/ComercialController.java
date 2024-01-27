@@ -1,5 +1,6 @@
 package org.iesvegademijas.tienda_informatica.controlador;
 
+import org.iesvegademijas.tienda_informatica.dto.ClienteDTO;
 import org.iesvegademijas.tienda_informatica.modelo.Cliente;
 import org.iesvegademijas.tienda_informatica.modelo.Fabricante;
 import org.iesvegademijas.tienda_informatica.modelo.Pedido;
@@ -83,6 +84,9 @@ public class ComercialController {
         /*List<Cliente> clientesOrdenados = comercialService.clientesYTotalDelComercialOrdenados(clienteDelPedido.getId());
         model.addAttribute("clientesDelComercialOrdenados", clientesOrdenados);*/
 
+
+        ClienteDTO clienteConTotal = comercialService.totalPedidoCliente(listaCli.get(0).getId());
+        model.addAttribute("clienteConTotal", clienteConTotal);
 
         model.addAttribute("comercial", comercial);
         return "detalle-comercial";

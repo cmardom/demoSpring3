@@ -103,22 +103,31 @@
 
         <!--/*Si hay clientes, se muestra listado*/-->
         <!--    <div class="bodyTable" th:each="comercial : ${listaComerciales}"> -->
-        <div th:if="${clientesDelComercialOrdenados}">
+        <div th:if="${clienteConTotal}">
             <div class="theader">
                 <div class="list-group-items fw-bold" th:text="#{txt_IDCliente}"></div>
                 <div class="list-group-items fw-bold" th:text="#{txt_Total}"></div>
 
             </div>
 
+            <div class="tbody">
+                <div class="list-group-items fw-bold" th:text="${clienteConTotal.id}"></div>
+                <div class="list-group-items" th:text="${clienteConTotal.totalPedido}" ></div>
+
+            <div>
+
             <!--th:attr="class=${condition ? 'base condition-true' : 'base condition-false'}" -->
-            <div th:each="cliente : ${clientesDelComercialOrdenados}">
+           <!-- <div th:each="cliente : ${clientesDelComercialOrdenados}">
                 <div th:if="${cliente.getCuantiaTotalPedidos() > 0}" class="bodyTable">
                      <div class="list-group-items fw-bold" th:text="${cliente.id}"></div>
                     <div class="list-group-items" th:text="${cliente.cuantiaTotalPedidos}" ></div>
                 </div>
                 <div th:unless="${cliente.getCuantiaTotalPedidos() > 0}">
             </div>
-        </div>
+        </div>-->
+
+
+
         <!--/* Si no, mensaje*/-->
         <div th:unless="${clientesDelComercialOrdenados}">
 

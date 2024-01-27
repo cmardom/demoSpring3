@@ -4,6 +4,7 @@ import org.iesvegademijas.tienda_informatica.dao.ClienteDAO;
 import org.iesvegademijas.tienda_informatica.dao.ComercialDAO;
 import org.iesvegademijas.tienda_informatica.dao.ComercialDAOImpl;
 import org.iesvegademijas.tienda_informatica.dao.PedidoDAO;
+import org.iesvegademijas.tienda_informatica.dto.ClienteDTO;
 import org.iesvegademijas.tienda_informatica.modelo.Cliente;
 import org.iesvegademijas.tienda_informatica.modelo.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,10 +67,20 @@ public class ComercialService {
 
     }*/
 
-    public double totalPedidoCliente (int id_cliente){
+    public ClienteDTO totalPedidoCliente (int id_cliente){
         List<Pedido> pedidos = mostrarPedidosCliente(id_cliente);
         double resultado = pedidos.stream().map(p -> p.getTotal()).reduce(0.0, Double::sum).doubleValue();
-        return resultado;
+
+        ClienteDTO clienteDTO = new ClienteDTO();
+        clienteDTO.setId(oneCli(id_cliente).getId());
+        clienteDTO.setNombre(oneCli(id_cliente).getNombre());
+        clienteDTO.setApellido1(oneCli(id_cliente).getApellido1());
+        clienteDTO.setApellido2(oneCli(id_cliente).getApellido2());
+        clienteDTO.setCiudad(oneCli(id_cliente).getCiudad());
+        clienteDTO.setCategoria(oneCli(id_cliente).getCategoria());
+        clienteDTO.setTotalPedido(resultado);
+        return clienteDTO;
+
     }
 
     public double totalPedidoComercial (int id_comercial){
@@ -127,7 +138,6 @@ public class ComercialService {
     }
 
     public Comercial one (Integer id){
-        /*mover aqui la logica de pedido u otro metodo para las listas*/
         Optional<Comercial> optCom = comercialDAO.find(id);
 
         if (optCom.isPresent()){
@@ -138,7 +148,6 @@ public class ComercialService {
     }
 
     public Cliente oneCli (Integer id){
-        /*mover aqui la logica de pedido u otro metodo para las listas*/
         Optional<Cliente> optCom = clienteDAO.find(id);
 
         if (optCom.isPresent()){
@@ -159,4 +168,11 @@ public class ComercialService {
     public void deleteComercial(int id){
         comercialDAO.delete(id);
     }
+
+
+
+
+
+
+
 }
