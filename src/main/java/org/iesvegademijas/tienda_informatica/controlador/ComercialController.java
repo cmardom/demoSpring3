@@ -1,6 +1,7 @@
 package org.iesvegademijas.tienda_informatica.controlador;
 
 import org.iesvegademijas.tienda_informatica.dto.ClienteDTO;
+import org.iesvegademijas.tienda_informatica.mapstruct.ClienteMapper;
 import org.iesvegademijas.tienda_informatica.modelo.Cliente;
 import org.iesvegademijas.tienda_informatica.modelo.Fabricante;
 import org.iesvegademijas.tienda_informatica.modelo.Pedido;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -27,7 +29,8 @@ public class ComercialController {
    /* @Autowired
     private ClienteService clienteService;*/
 
-
+    @Autowired
+    private ClienteMapper clienteMapper;
 
 
     @GetMapping("/comerciales")
@@ -56,11 +59,12 @@ public class ComercialController {
 
 
         //para poder mostrar un mensaje si no hay pedidos
-        if (pedidosFiltradosComercial.isEmpty()) {
+
+/*        if (pedidosFiltradosComercial.isEmpty()) {
             pedidosFiltradosComercial = null;
-        } else {
+        } else {*/
             /*recorrer la lista que enlazara con los clientes de los pedidos de ese comercial*/
-            for (int i = 0; i < idsQueSalenEnLaListaDePedidos.size(); i++) {
+           /* for (int i = 0; i < idsQueSalenEnLaListaDePedidos.size(); i++) {
                 if (idsQueSalenEnLaListaDePedidos.get(i) == listaCli.get(i).getId()) {
                     Cliente clienteDelPedido = comercialService.oneCli(idsQueSalenEnLaListaDePedidos.get(i));
                     model.addAttribute("clienteDelPedido", clienteDelPedido);
@@ -77,7 +81,8 @@ public class ComercialController {
 
 
                 }
-            }
+            }*/
+/*
 
             clientesConTotalesOrdenados = clientesConTotales.stream()
                     .sorted(Comparator.comparingDouble(ClienteDTO::getTotalPedido))
@@ -85,47 +90,58 @@ public class ComercialController {
 
             model.addAttribute("clientesConTotalesOrdenados", clientesConTotalesOrdenados);
 
+*/
 
-        }
-        model.addAttribute("pedidosFiltradosComercial", pedidosFiltradosComercial);
+            //}
+            model.addAttribute("pedidosFiltradosComercial", pedidosFiltradosComercial);
 
-        for (int i = 0; i < Objects.requireNonNull(pedidosFiltradosComercial).size(); i++){
-            if (pedidosFiltradosComercial.get(0).getId_cliente() == listaCli.get(0).getId()){
-                List<ClienteDTO> clientesConTotales2 = comercialService.totalPedidoCliente(pedidosFiltradosComercial.get(0).getId_cliente());
-                List<ClienteDTO> clientesConTotalesOrdenados2 = clientesConTotales.stream()
-                        .sorted(Comparator.comparingDouble(ClienteDTO::getTotalPedido))
-                        .collect(Collectors.toList());
+            List<ClienteDTO> clientesConTotales2 = new ArrayList<>();
+            for (int i = 0; i < pedidosFiltradosComercial.size(); i++){
+//            if (pedidosFiltradosComercial.get(i).getId_cliente() == listaCli.get(i).getId()){
+                ClienteDTO clienteConTotal = comercialService.totalPedidoCliente(pedidosFiltradosComercial.get(i).getId_cliente());
 
-                model.addAttribute("clientesConTotalesOrdenados2", clientesConTotalesOrdenados2);
+                if (!clientesConTotales2.contains(clienteConTotal)){
+                    clientesConTotales2.add(clienteConTotal);
+
+                    List<ClienteDTO> clientesConTotalesOrdenados2 = clientesConTotales2.stream()
+                            .sorted(Comparator.comparingDouble(ClienteDTO::getTotalPedido))
+                            .collect(Collectors.toList());
+
+                    model.addAttribute("clientesConTotalesOrdenados2", clientesConTotalesOrdenados2);
+
+                }
+
+
+
+
+//            }
             }
-        }
 
 
-        double total = comercialService.totalPedidoComercial(id);
+            double total = comercialService.totalPedidoComercial(id);
 
-        model.addAttribute("totalPedidosComercial", total);
+            model.addAttribute("totalPedidosComercial", total);
 
-        double media = comercialService.mediaPedidoComercial(id);
-        model.addAttribute("mediaPedidosComercial", media);
+            double media = comercialService.mediaPedidoComercial(id);
+            model.addAttribute("mediaPedidosComercial", media);
 
-        Pedido pedidoMax = comercialService.pedidoMaximo(id);
-        model.addAttribute("pedidoMaximo", pedidoMax);
+            Pedido pedidoMax = comercialService.pedidoMaximo(id);
+            model.addAttribute("pedidoMaximo", pedidoMax);
 
-        Pedido pedidoMin = comercialService.pedidoMinimo(id);
-        model.addAttribute("pedidoMinimo", pedidoMin);
+            Pedido pedidoMin = comercialService.pedidoMinimo(id);
+            model.addAttribute("pedidoMinimo", pedidoMin);
 
         /*List<Cliente> clientesOrdenados = comercialService.clientesYTotalDelComercialOrdenados(clienteDelPedido.getId());
         model.addAttribute("clientesDelComercialOrdenados", clientesOrdenados);*/
 
 
-        //ClienteDTO clienteConTotal = comercialService.totalPedidoCliente(listaCli.get(0).getId(), comercial.getId());
-        //model.addAttribute("clienteConTotal", clienteConTotal);
+            //ClienteDTO clienteConTotal = comercialService.totalPedidoCliente(listaCli.get(0).getId(), comercial.getId());
+            //model.addAttribute("clienteConTotal", clienteConTotal);
 
-        model.addAttribute("comercial", comercial);
-        return "detalle-comercial";
-    }
-
-    @GetMapping("/comerciales/crear")
+            model.addAttribute("comercial", comercial);
+            return "detalle-comercial";
+        }
+        @GetMapping("/comerciales/crear")
     public String crear(Model model){
         Comercial comercial = new Comercial();
         model.addAttribute("comercial", comercial);

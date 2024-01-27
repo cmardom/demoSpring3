@@ -21,6 +21,13 @@ public class ClienteDTO extends Cliente{
 
    }
 
+   public double getTotalPedido() {
+      return totalPedido;
+   }
+
+   public void setTotalPedido(double totalPedido) {
+      this.totalPedido = totalPedido;
+   }
 
    //public ClienteDTO(Cliente cliente, double totalPedidoCliente);
 }

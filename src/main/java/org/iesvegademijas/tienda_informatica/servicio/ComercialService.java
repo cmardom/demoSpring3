@@ -5,6 +5,7 @@ import org.iesvegademijas.tienda_informatica.dao.ComercialDAO;
 import org.iesvegademijas.tienda_informatica.dao.ComercialDAOImpl;
 import org.iesvegademijas.tienda_informatica.dao.PedidoDAO;
 import org.iesvegademijas.tienda_informatica.dto.ClienteDTO;
+import org.iesvegademijas.tienda_informatica.mapstruct.ClienteMapper;
 import org.iesvegademijas.tienda_informatica.modelo.Cliente;
 import org.iesvegademijas.tienda_informatica.modelo.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,8 @@ public class ComercialService {
 
     @Autowired
     private ClienteDAO clienteDAO;
-
+    @Autowired
+    private ClienteMapper clienteMapper;
 
 
     public List<Pedido> mostrarPedidosComercial(int id_comercial) {
@@ -67,7 +69,7 @@ public class ComercialService {
 
     }*/
 
-    public List<ClienteDTO> totalPedidoCliente (int id_cliente){
+    public ClienteDTO totalPedidoCliente (int id_cliente){
        /* List<Pedido> pedidos = mostrarPedidosCliente(id_cliente);
         List<Pedido> pedidosComercial = new ArrayList<>();
 
@@ -80,17 +82,26 @@ public class ComercialService {
         List<Pedido> pedidosCliente = mostrarPedidosCliente(id_cliente);
         List<Pedido> pedidosComercialDeUnCliente = new ArrayList<>();
         ClienteDTO clienteDTO = new ClienteDTO();
-        List<ClienteDTO> listaClientesDTO = new ArrayList<>();
+
+        //List<ClienteDTO> listaClientesDTO = new ArrayList<>();
         for (int i = 0; i < pedidosCliente.size(); i++) {
             pedidosComercialDeUnCliente = mostrarPedidosComercial(pedidosCliente.get(i).getId_comercial());
+
+
+
+
+
             double resultado = pedidosComercialDeUnCliente.stream().map(Pedido::getTotal).reduce(0.0, Double::sum);
-            clienteDTO = new ClienteDTO(oneCli(id_cliente).getId(),
+            clienteDTO = clienteMapper.clienteAClienteDTO(oneCli(id_cliente));
+            clienteDTO.setTotalPedido(resultado);
+
+          /*  ClienteDTO clienteDTO = new ClienteDTO(oneCli(id_cliente).getId(),
                                                     oneCli(id_cliente).getNombre(),
                                                     oneCli(id_cliente).getApellido1(),
                                                     oneCli(id_cliente).getApellido2(),
                                                     oneCli(id_cliente).getCiudad(),
-                                                    oneCli(id_cliente).getCategoria(), resultado);
-            listaClientesDTO.add(clienteDTO);
+                                                    oneCli(id_cliente).getCategoria(), resultado);*/
+            //listaClientesDTO.add(clienteDTO);
           /*  clienteDTO.setId(oneCli(id_cliente).getId());
             clienteDTO.setNombre(oneCli(id_cliente).getNombre());
             clienteDTO.setApellido1(oneCli(id_cliente).getApellido1());
@@ -98,10 +109,10 @@ public class ComercialService {
             clienteDTO.setCiudad(oneCli(id_cliente).getCiudad());
             clienteDTO.setCategoria(oneCli(id_cliente).getCategoria());
             clienteDTO.setTotalPedido(resultado);*/
-            break;
+            //break;
         }
 
-        return listaClientesDTO;
+        return clienteDTO;
 
 
 

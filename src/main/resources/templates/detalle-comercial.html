@@ -111,10 +111,8 @@
                 <div class="list-group-items fw-bold" th:text="#{txt_Ciudad}"></div>
                 <div class="list-group-items fw-bold" th:text="#{txt_Categoría}"></div>
                 <div class="list-group-items fw-bold" th:text="TOTAL"></div>
-
-
-
             </div>
+
 
             <div class="bodyTable" th:each="clienteTotal : ${clientesConTotalesOrdenados2}">
                 <div class="list-group-items fw-bold" th:text="${clienteTotal.id}"></div>
@@ -124,10 +122,10 @@
                 <div class="list-group-items" th:text="${clienteTotal.ciudad}"></div>
                 <div class="list-group-items" th:text="${clienteTotal.categoria}"></div>
                 <div class="list-group-items" th:text="${clienteTotal.totalPedido}"></div>
-
             </div>
-    </div>
 
+        </div>
+    </div>
 
     <div class="return">
 
