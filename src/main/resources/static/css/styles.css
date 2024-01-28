@@ -101,5 +101,17 @@ body #contenedora .return {
   padding-top: 10px;
   margin-bottom: 10px;
 }
+body #contenedora .return forminput:required:valid {
+  background-image: url("static/images/bien.png");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: 25px;
+}
+body #contenedora .return forminput:required:invalid {
+  background-image: url("static/images/mal.png");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: 25px;
+}
 
 /*# sourceMappingURL=styles.css.map */

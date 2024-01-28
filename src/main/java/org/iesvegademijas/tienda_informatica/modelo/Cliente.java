@@ -1,15 +1,45 @@
 package org.iesvegademijas.tienda_informatica.modelo;
 
+import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class Cliente {
+
+    @Min(value=0, message = "{msg.valid.min}")
     private int id;
+
+    @NotNull(message = "{msg.valid.not.null}")
+    @NotBlank(message = "{msg.valid.not.blank}")
+    @Max(value=30, message = "{msg.valid.max")
     private String nombre;
+
+    @NotNull(message = "{msg.valid.not.null}")
+    @NotBlank(message = "{msg.valid.not.blank}")
+    @Max(value=30, message = "{msg.valid.max")
     private String apellido1;
+
+    //opcional
     private String apellido2;
+
+    @NotNull(message = "{msg.valid.not.null}")
+    @NotBlank(message = "{msg.valid.not.blank}")
+    @Max(value=50, message = "{msg.valid.max")
     private String ciudad;
+
+    @Min(value=100, message = "{msg.valid.min}")
+    @Max(value=1000, message = "{msg.valid.max")
     private int categoria;
 
 
+
+
     public Cliente(int id, String nombre, String apellido1, String apellido2, String ciudad, int categoria) {
+
         this.id = id;
         this.nombre = nombre;
         this.apellido1 = apellido1;

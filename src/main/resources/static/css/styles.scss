@@ -144,8 +144,19 @@
         margin-bottom: 10px;
 
         form{
-          input{
+          &input:required:valid{
+            background-image: url("static/images/bien.png");
+            background-position: right;
+            background-repeat: no-repeat;
+            background-size: 25px;
 
+          }
+
+          &input:required:invalid{
+            background-image: url("static/images/mal.png");
+            background-position: right;
+            background-repeat: no-repeat;
+            background-size: 25px;
           }
         }
       }

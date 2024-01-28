@@ -1,9 +1,23 @@
 package org.iesvegademijas.tienda_informatica.modelo;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class Comercial {
     private int id;
+
+    @NotNull(message = "{msg.valid.not.null}")
+    @NotBlank(message = "{msg.valid.not.blank}")
+    @Max(value=30, message = "{msg.valid.max")
     private String nombre;
+
+    @NotNull(message = "{msg.valid.not.null}")
+    @NotBlank(message = "{msg.valid.not.blank}")
+    @Max(value=30, message = "{msg.valid.max")
     private String apellido1;
+
+    //opcional
     private String apellido2;
     private float comision;
 
