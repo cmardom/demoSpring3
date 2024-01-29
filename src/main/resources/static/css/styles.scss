@@ -78,7 +78,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         justify-items: center;
-        align-items: center;
+        align-items: start;
 
         &:hover {
           background-color: rgba(255,255,255,0.3);
@@ -123,6 +123,8 @@
         }
 
 
+
+
       }
       .leyenda{
         width: 30%;
@@ -143,22 +145,7 @@
         padding-top: 10px;
         margin-bottom: 10px;
 
-        form{
-          &input:required:valid{
-            background-image: url("static/images/bien.png");
-            background-position: right;
-            background-repeat: no-repeat;
-            background-size: 25px;
 
-          }
-
-          &input:required:invalid{
-            background-image: url("static/images/mal.png");
-            background-position: right;
-            background-repeat: no-repeat;
-            background-size: 25px;
-          }
-        }
       }
 
     }

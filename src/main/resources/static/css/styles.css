@@ -61,7 +61,7 @@ body #contenedora .bodyTable {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   justify-items: center;
-  align-items: center;
+  align-items: start;
 }
 body #contenedora .bodyTable:hover {
   background-color: rgba(255, 255, 255, 0.3);
@@ -100,18 +100,6 @@ body #contenedora .return {
   border-top: 1px dotted white;
   padding-top: 10px;
   margin-bottom: 10px;
-}
-body #contenedora .return forminput:required:valid {
-  background-image: url("static/images/bien.png");
-  background-position: right;
-  background-repeat: no-repeat;
-  background-size: 25px;
-}
-body #contenedora .return forminput:required:invalid {
-  background-image: url("static/images/mal.png");
-  background-position: right;
-  background-repeat: no-repeat;
-  background-size: 25px;
 }
 
 /*# sourceMappingURL=styles.css.map */

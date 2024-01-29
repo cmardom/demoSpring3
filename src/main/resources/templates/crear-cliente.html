@@ -22,20 +22,20 @@
             <div class="list-group-items fw-bold" th:text="#{txt_Apellido1}"></div>
             <div class="list-group-items fw-bold" th:text="#{txt_Apellido2}"></div>
             <div class="list-group-items fw-bold" th:text="#{txt_Ciudad}"></div>
-            <div class="list-group-items fw-bold" th:text="#{txt_Categoría}">Categoria</div>
+            <div class="list-group-items fw-bold" th:text="#{txt_Categoria}"></div>
 
         </div>
-        <div class="bodyTable">
+        <div class="bodyTable" >
             <div>
-                <input id="nombre" th:type="text" class="form-control" th:field="*{nombre}" th:placeholder="#{txt_Nombre}" th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}"> <!--th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}"-->
-                <ul class="text-danger " th:if="${#fields.hasErrors('nombre')}">
+                <input id="nombre" th:type="text" class="form-control" th:field="*{nombre}" th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}"> <!--th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}"-->
+                <ul  th:if="${#fields.hasErrors('nombre')}">
                     <li th:each="err : ${#fields.errors('nombre')}" th:text="${err}" />
                 </ul>
             </div>
 
             <div>
                 <input class="form-control" th:type="text" th:field="*{apellido1}" th:classappend="${#fields.hasErrors('apellido1')?'is-invalid':''}" />
-                <ul class="text-danger " th:if="${#fields.hasErrors('apellido1')}">
+                <ul th:if="${#fields.hasErrors('apellido1')}">
                     <li th:each="err : ${#fields.errors('apellido1')}" th:text="${err}" />
                 </ul>
             </div>
@@ -46,14 +46,14 @@
 
             <div>
                 <input id="ciudad" class="form-control" th:field="*{ciudad}" th:type="text" th:classappend="${#fields.hasErrors('ciudad')?'is-invalid':''}"/>
-                <ul class="text-danger" th:if="${#fields.hasErrors('ciudad')}">
+                <ul th:if="${#fields.hasErrors('ciudad')}">
                     <li th:each="err : ${#fields.errors('ciudad')}" th:text="${err}" />
                 </ul>
             </div>
 
             <div>
-                <input id="categoria" class="form-control" th:field="*{categoria}" th:min="100" th:max="1000" th:classappend="${#fields.hasErrors('categoria')?'is-invalid':''}"/>
-                <ul class="text-danger " th:if="${#fields.hasErrors('categoria')}">
+                <input th:type="number" id="categoria" class="form-control" th:field="*{categoria}" th:classappend="${#fields.hasErrors('categoria')?'is-invalid':''}"/>
+                <ul th:if="${#fields.hasErrors('categoria')}">
                     <li th:each="err : ${#fields.errors('categoria')}" th:text="${err}" />
                 </ul>
             </div>

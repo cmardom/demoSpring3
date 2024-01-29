@@ -4,6 +4,7 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 
 @Data
 //@AllArgsConstructor
@@ -31,8 +32,7 @@ public class Cliente {
     @Size(max=50, message = "{msg.valid.max}")
     private String ciudad;
 
-    @Min(value=100, message = "{msg.valid.min}")
-    @Max(value=1000, message = "{msg.valid.max}")
+    @Range(min = 100, max = 1000, message = "{msg.valid.range}")
     private int categoria;
 
 

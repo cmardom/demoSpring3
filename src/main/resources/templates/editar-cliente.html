@@ -19,49 +19,56 @@
             <div class="list-group-items fw-bold" th:text="#{txt_Apellido1}"></div>
             <div class="list-group-items fw-bold" th:text="#{txt_Apellido2}"></div>
             <div class="list-group-items fw-bold" th:text="#{txt_Ciudad}"></div>
-            <div class="list-group-items fw-bold" th:text="#{txt_Categoría}"></div>
+            <div class="list-group-items fw-bold" th:text="#{txt_Categoria}"></div>
 
         </div>
-        <div>
-            <input th:type="text" required class="form-control" th:field="*{nombre}" th:placeholder="#{txt_Nombre}" minlength="1" maxlength="30"> <!--th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}"-->
-            <ul class="text-danger " th:if="${#fields.hasErrors('nombre')}">
-                <li th:each="err : ${#fields.errors('nombre')}" th:text="#{msg.valid.min}" />
-            </ul>
+
+
+        <div class="bodyTable" >
+
+            <div>
+                <input id="nombre" th:type="text" class="form-control" th:field="*{nombre}" th:placeholder="#{txt_Nombre}" th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}"> <!--th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}"-->
+                <ul  th:if="${#fields.hasErrors('nombre')}">
+                    <li th:each="err : ${#fields.errors('nombre')}" th:text="${err}" />
+                </ul>
+            </div>
+
+            <div>
+                <input class="form-control" th:type="text" th:field="*{apellido1}" th:classappend="${#fields.hasErrors('apellido1')?'is-invalid':''}" />
+                <ul th:if="${#fields.hasErrors('apellido1')}">
+                    <li th:each="err : ${#fields.errors('apellido1')}" th:text="${err}" />
+                </ul>
+            </div>
+
+            <div>
+                <input class="form-control" th:type="text" th:field="*{apellido2}" />
+            </div>
+
+            <div>
+                <input id="ciudad" class="form-control" th:field="*{ciudad}" th:type="text" th:classappend="${#fields.hasErrors('ciudad')?'is-invalid':''}"/>
+                <ul th:if="${#fields.hasErrors('ciudad')}">
+                    <li th:each="err : ${#fields.errors('ciudad')}" th:text="${err}" />
+                </ul>
+            </div>
+
+            <div>
+                <input th:type="number" id="categoria" class="form-control" th:field="*{categoria}"  th:classappend="${#fields.hasErrors('categoria')?'is-invalid':''}"/>
+                <ul th:if="${#fields.hasErrors('categoria')}">
+                    <li th:each="err : ${#fields.errors('categoria')}" th:text="${err}" />
+                </ul>
+            </div>
+
+            <!-- <div>
+                 <input class="control" type="email" placeholder="tucorreo@correo.com" id="email" pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/" name="email" minlength="3" maxlength="50" size="50" required autocomplete="off">
+                 <ul class="text-danger " th:if="${#fields.hasErrors('email')}">
+                     <li th:each="err : ${#fields.errors('email')}" th:text="#{msg.valid.pattern.email}" />
+                 </ul>
+             </div>
+
+            -->
+
         </div>
 
-        <div>
-            <input class="form-control" th:type="text" th:field="*{apellido1}" minlength="1" maxlength="30" required />   <!--th:classappend="${#fields.hasErrors('apellido1')?'is-invalid':''}"-->
-            <ul class="text-danger " th:if="${#fields.hasErrors('apellido1')}">
-                <li th:each="err : ${#fields.errors('apellido1')}" th:text="#{msg.valid.min}" />
-            </ul>
-        </div>
-
-        <div>
-            <input class="form-control" th:type="text" th:field="*{apellido2}" />
-        </div>
-
-        <div>
-            <input class="form-control" th:field="*{ciudad}" th:type="text" minlength="1" maxlength="50" required/>
-            <ul class="text-danger " th:if="${#fields.hasErrors('ciudad')}">
-                <li th:each="err : ${#fields.errors('ciudad')}" th:text="#{msg.valid.min}" />
-            </ul>
-        </div>
-
-        <div>
-            <input class="form-control" th:field="*{categoria}" th:min="100" th:max="1000" required/>
-            <ul class="text-danger " th:if="${#fields.hasErrors('categoria')}">
-                <li th:each="err : ${#fields.errors('categoria')}" th:text="#{msg.valid.min}" />
-            </ul>
-        </div>
-
-        <!-- <div>
-             <input class="control" type="email" placeholder="tucorreo@correo.com" id="email" pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/" name="email" minlength="3" maxlength="50" size="50" required autocomplete="off">
-             <ul class="text-danger " th:if="${#fields.hasErrors('email')}">
-                 <li th:each="err : ${#fields.errors('email')}" th:text="#{msg.valid.pattern.email}" />
-             </ul>
-         </div>
-
--->
 
         <div class="return">
             <input class="btn btn-primary" type="submit" th:value="#{btn_guardarCambios}"/>
