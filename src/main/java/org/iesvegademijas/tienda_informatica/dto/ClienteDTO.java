@@ -11,8 +11,8 @@ public class ClienteDTO extends Cliente{
 
    private double totalPedido;
 
-   public ClienteDTO (int id, String nombre, String apellido1, String apellido2, String ciudad, int categoria, double totalPedido){
-      super(id, nombre, apellido1, apellido2, ciudad, categoria);
+   public ClienteDTO (int id, String nombre, String apellido1, String apellido2, String ciudad, int categoria, String email, double totalPedido){
+      super(id, nombre, apellido1, apellido2, ciudad, categoria, email);
 
       this.totalPedido = totalPedido;
    }
@@ -29,5 +29,5 @@ public class ClienteDTO extends Cliente{
       this.totalPedido = totalPedido;
    }
 
-   //public ClienteDTO(Cliente cliente, double totalPedidoCliente);
+
 }

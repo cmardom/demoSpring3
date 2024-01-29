@@ -23,6 +23,8 @@
             <div class="list-group-items fw-bold" th:text="#{txt_Apellido2}"></div>
             <div class="list-group-items fw-bold" th:text="#{txt_Ciudad}"></div>
             <div class="list-group-items fw-bold" th:text="#{txt_Categoria}"></div>
+            <div class="list-group-items fw-bold" th:text="#{txt_Email}"></div>
+
 
         </div>
         <div class="bodyTable" >
@@ -58,14 +60,14 @@
                 </ul>
             </div>
 
-           <!-- <div>
-                <input class="control" type="email" placeholder="tucorreo@correo.com" id="email" pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/" name="email" minlength="3" maxlength="50" size="50" required autocomplete="off">
-                <ul class="text-danger " th:if="${#fields.hasErrors('email')}">
+           <div>
+                <input class="form-control"  id="email" name="email" th:classappend="${#fields.hasErrors('categoria')?'is-invalid':''}">
+                <ul th:if="${#fields.hasErrors('email')}">
                     <li th:each="err : ${#fields.errors('email')}" th:text="#{msg.valid.pattern.email}" />
                 </ul>
             </div>
 
--->
+
 
         </div>
 

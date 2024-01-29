@@ -10,7 +10,8 @@ CREATE TABLE cliente (
                          apellido1 VARCHAR(100),
                          apellido2 VARCHAR(100),
                          ciudad VARCHAR(100),
-                         categoria INT
+                         categoria INT,
+                         email VARCHAR(100)
 );
 
 -- Creación de la tabla comercial
@@ -48,17 +49,18 @@ INSERT INTO fabricante (nombre) VALUES
 /********************/
 
 -- Inserciones para la tabla cliente
-INSERT INTO cliente (nombre, apellido1, apellido2, ciudad, categoria) VALUES
-                                                                          ('Juan', 'Pérez', 'García', 'Madrid', 1),
-                                                                          ('Ana', 'López', 'Fernández', 'Barcelona', 2),
-                                                                          ('Carlos', 'Martín', 'Ruiz', 'Sevilla', 1),
-                                                                          ('Laura', 'Gómez', 'Moreno', 'Valencia', 3),
-                                                                          ('Paco', 'Lozano', 'Moreno', 'Granada', 3),
-                                                                          ('Laura', 'López', 'Ruiz', 'Barcelona', 2),
-                                                                          ('Carlos', 'García', 'Martín', 'Sevilla', 2),
-                                                                          ('Sergio', 'Jiménez', 'Alonso', 'Bilbao', 2),
-                                                                          ('Elena', 'Ruiz', 'Fernández', 'Madrid', 1),
-                                                                          ('Luis', 'Fernández', 'Gómez', 'Barcelona', 3);
+INSERT INTO cliente (nombre, apellido1, apellido2, ciudad, categoria, email) VALUES
+                                                                                 ('Juan', 'Pérez', 'García', 'Madrid', 1, 'juan.perez@correo.com'),
+                                                                                 ('Ana', 'López', 'Fernández', 'Barcelona', 2, 'ana.lopez@correo.com'),
+                                                                                 ('Carlos', 'Martín', 'Ruiz', 'Sevilla', 1, 'carlos.martin@correo.com'),
+                                                                                 ('Laura', 'Gómez', 'Moreno', 'Valencia', 3, 'laura.gomez@correo.com'),
+                                                                                 ('Paco', 'Lozano', 'Moreno', 'Granada', 3, 'paco.lozano@correo.com'),
+                                                                                 ('Laura', 'López', 'Ruiz', 'Barcelona', 2, 'laura.lopez@correo.com'),
+                                                                                 ('Carlos', 'García', 'Martín', 'Sevilla', 2, 'carlos.garcia@correo.com'),
+                                                                                 ('Sergio', 'Jiménez', 'Alonso', 'Bilbao', 2, 'sergio.jimenez@correo.com'),
+                                                                                 ('Elena', 'Ruiz', 'Fernández', 'Madrid', 1, 'elena.ruiz@correo.com'),
+                                                                                 ('Luis', 'Fernández', 'Gómez', 'Barcelona', 3, 'luis.fernandez@correo.com');
+
 
 
 

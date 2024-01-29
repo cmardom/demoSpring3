@@ -16,12 +16,13 @@ public class ClienteDAOImpl implements  ClienteDAO{
 
     @Override
     public synchronized void create(Cliente cliente){
-        jdbcTemplate.update("INSERT INTO cliente (nombre, apellido1, apellido2, ciudad, categoria) VALUES (?, ?, ?, ?, ?)"
+        jdbcTemplate.update("INSERT INTO cliente (nombre, apellido1, apellido2, ciudad, categoria, email) VALUES (?, ?, ?, ?, ?, ?)"
                 , cliente.getNombre()
                 , cliente.getApellido1()
                 , cliente.getApellido2()
                 , cliente.getCiudad()
-                , cliente.getCategoria());
+                , cliente.getCategoria()
+                , cliente.getEmail());
     }
 
     @Override
@@ -29,7 +30,7 @@ public class ClienteDAOImpl implements  ClienteDAO{
         /*FALLO > No reconoce id en la query*/
         List<Cliente> listaCli = jdbcTemplate.query("SELECT * FROM cliente", (rs, rowNum) -> new Cliente(rs.getInt("id"), rs.getString("nombre")
                 , rs.getString("apellido1"), rs.getString("apellido2")
-                , rs.getString("ciudad"), rs.getInt("categoria")));
+                , rs.getString("ciudad"), rs.getInt("categoria"), rs.getString("email")));
         return listaCli;
     }
 
@@ -39,7 +40,7 @@ public class ClienteDAOImpl implements  ClienteDAO{
                 .queryForObject("SELECT * FROM cliente WHERE id = ?"
                 , (rs, rowNum) -> new Cliente(rs.getInt("id"), rs.getString("nombre")
                                 , rs.getString("apellido1"), rs.getString("apellido2")
-                                , rs.getString("ciudad"), rs.getInt("categoria"))
+                                , rs.getString("ciudad"), rs.getInt("categoria"), rs.getString("email"))
         ,id);
 
         if (cli != null) return Optional.of(cli);
@@ -54,13 +55,15 @@ public class ClienteDAOImpl implements  ClienteDAO{
 														apellido1 = ?, 
 														apellido2 = ?,
 														ciudad = ?,
-														categoria = ?  
+														categoria = ?,
+														email = ?  
 												WHERE id = ?
 										""", cliente.getNombre()
                 , cliente.getApellido1()
                 , cliente.getApellido2()
                 , cliente.getCiudad()
                 , cliente.getCategoria()
+                , cliente.getEmail()
                 , cliente.getId());
 
         String consola = rows > 0 ? "Update de cliente con " + rows + " registros actualizados" : "No se han realizado updates de cliente";

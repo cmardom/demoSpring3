@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Range;
 
 @Data
-//@AllArgsConstructor
-//@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class Cliente {
 
     @Min(value=0, message = "{msg.valid.min}")
@@ -35,80 +35,11 @@ public class Cliente {
     @Range(min = 100, max = 1000, message = "{msg.valid.range}")
     private int categoria;
 
+    @Email(regexp = "\\b[\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4}\\b")
+    private String email;
 
 
 
-    public Cliente(int id, String nombre, String apellido1, String apellido2, String ciudad, int categoria) {
-
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido1 = apellido1;
-        this.apellido2 = apellido2;
-        this.ciudad = ciudad;
-        this.categoria = categoria;
-    }
 
 
-    public Cliente() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido1() {
-        return apellido1;
-    }
-
-    public void setApellido1(String apellido1) {
-        this.apellido1 = apellido1;
-    }
-
-    public String getApellido2() {
-        return apellido2;
-    }
-
-    public void setApellido2(String apellido2) {
-        this.apellido2 = apellido2;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public int getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(int categoria) {
-        this.categoria = categoria;
-    }
-
-    @Override
-    public String toString() {
-        return "Cliente{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellido1='" + apellido1 + '\'' +
-                ", apellido2='" + apellido2 + '\'' +
-                ", ciudad='" + ciudad + '\'' +
-                ", categoria='" + categoria + '\'' +
-                '}';
-    }
 }
