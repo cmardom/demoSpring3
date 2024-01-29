@@ -27,7 +27,7 @@
         <div class="bodyTable" >
 
             <div>
-                <input id="nombre" th:type="text" class="form-control" th:field="*{nombre}" th:placeholder="#{txt_Nombre}" th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}"> <!--th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}"-->
+                <input id="nombre" th:type="text" class="form-control" th:field="*{nombre}"  th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}"> <!--th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}"-->
                 <ul  th:if="${#fields.hasErrors('nombre')}">
                     <li th:each="err : ${#fields.errors('nombre')}" th:text="${err}" />
                 </ul>

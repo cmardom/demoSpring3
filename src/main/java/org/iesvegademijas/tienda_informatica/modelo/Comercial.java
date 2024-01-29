@@ -1,24 +1,25 @@
 package org.iesvegademijas.tienda_informatica.modelo;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
+import org.hibernate.validator.constraints.Range;
 
 public class Comercial {
+    @Min(value=0, message = "{msg.valid.min}")
     private int id;
 
     @NotNull(message = "{msg.valid.not.null}")
     @NotBlank(message = "{msg.valid.not.blank}")
-    @Max(value=30, message = "{msg.valid.max")
+    @Size(max=30, message = "{msg.valid.max}")
     private String nombre;
 
     @NotNull(message = "{msg.valid.not.null}")
     @NotBlank(message = "{msg.valid.not.blank}")
-    @Max(value=30, message = "{msg.valid.max")
+    @Size(max=30, message = "{msg.valid.max}")
     private String apellido1;
 
     //opcional
     private String apellido2;
+    @Range(min=0, max=99999999, message = "{msg.valid.comission}")
     private float comision;
 
     public Comercial(int id, String nombre, String apellido1, String apellido2, float comision) {

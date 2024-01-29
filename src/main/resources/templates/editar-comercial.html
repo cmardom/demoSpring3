@@ -11,7 +11,7 @@
 <div id="contenedora">
     <form  th:action="@{/comerciales/editar/__${comercial.id}__}" th:object="${comercial}" method="post" >
         <div class="header">
-            <h1 th:text="#{h1_editarComercial}">Editar comercial</h1>
+            <h1 th:text="#{h1_editarComercial}"></h1>
         </div>
 
         <div class="theader">
@@ -20,22 +20,34 @@
             <div class="list-group-items fw-bold" th:text="#{txt_Apellido2}"></div>
             <div class="list-group-items fw-bold" th:text="#{txt_Comisión}"></div>
         </div>
-        <div class="bodyTable">
+        <div class="bodyTable" >
+
             <div>
-                <input class="form-control" th:field="*{nombre}" />
+                <input id="nombre" th:type="text" class="form-control" th:field="*{nombre}"  th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}"> <!--th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}"-->
+                <ul  th:if="${#fields.hasErrors('nombre')}">
+                    <li th:each="err : ${#fields.errors('nombre')}" th:text="${err}" />
+                </ul>
             </div>
 
             <div>
-                <input class="form-control" th:field="*{apellido1}" />
+                <input class="form-control" th:type="text" th:field="*{apellido1}" th:classappend="${#fields.hasErrors('apellido1')?'is-invalid':''}" />
+                <ul th:if="${#fields.hasErrors('apellido1')}">
+                    <li th:each="err : ${#fields.errors('apellido1')}" th:text="${err}" />
+                </ul>
             </div>
 
             <div>
-                <input class="form-control" th:field="*{apellido2}" />
+                <input class="form-control" th:type="text" th:field="*{apellido2}" />
             </div>
 
             <div>
-                <input class="form-control" th:field="*{comision}" />
+                <input th:type="number" id="comision" class="form-control" th:field="*{comision}"  th:classappend="${#fields.hasErrors('comision')?'is-invalid':''}"/>
+                <ul th:if="${#fields.hasErrors('comision')}">
+                    <li th:each="err : ${#fields.errors('comision')}" th:text="${err}" />
+                </ul>
             </div>
+
+
         </div>
 
         <div class="return">
