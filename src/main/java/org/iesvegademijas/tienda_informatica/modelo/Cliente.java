@@ -23,7 +23,7 @@ public class Cliente {
     @Max(value=30, message = "{msg.valid.max")
     private String apellido1;
 
-    //opcional
+    /*opcional*/
     private String apellido2;
 
     @NotNull(message = "{msg.valid.not.null}")

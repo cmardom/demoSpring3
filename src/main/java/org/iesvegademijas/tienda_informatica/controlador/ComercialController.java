@@ -97,7 +97,7 @@ public class ComercialController {
 
             List<ClienteDTO> clientesConTotales2 = new ArrayList<>();
             for (int i = 0; i < pedidosFiltradosComercial.size(); i++){
-//            if (pedidosFiltradosComercial.get(i).getId_cliente() == listaCli.get(i).getId()){
+            if (pedidosFiltradosComercial.get(i).getId_cliente() == listaCli.get(i).getId()){
                 ClienteDTO clienteConTotal = comercialService.totalPedidoCliente(pedidosFiltradosComercial.get(i).getId_cliente());
 
                 if (!clientesConTotales2.contains(clienteConTotal)){
@@ -114,7 +114,7 @@ public class ComercialController {
 
 
 
-//            }
+            }
             }
 
 

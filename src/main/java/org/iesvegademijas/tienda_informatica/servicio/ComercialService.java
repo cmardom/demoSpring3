@@ -90,7 +90,7 @@ public class ComercialService {
 
 
 
-
+//filter cliente
             double resultado = pedidosComercialDeUnCliente.stream().map(Pedido::getTotal).reduce(0.0, Double::sum);
             clienteDTO = clienteMapper.clienteAClienteDTO(oneCli(id_cliente));
             clienteDTO.setTotalPedido(resultado);
