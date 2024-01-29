@@ -15,12 +15,12 @@ public class Cliente {
 
     @NotNull(message = "{msg.valid.not.null}")
     @NotBlank(message = "{msg.valid.not.blank}")
-    @Max(value=30, message = "{msg.valid.max")
+    @Size(max=30, message = "{msg.valid.max}")
     private String nombre;
 
     @NotNull(message = "{msg.valid.not.null}")
     @NotBlank(message = "{msg.valid.not.blank}")
-    @Max(value=30, message = "{msg.valid.max")
+    @Size(max=30, message = "{msg.valid.max}")
     private String apellido1;
 
     /*opcional*/
@@ -28,11 +28,11 @@ public class Cliente {
 
     @NotNull(message = "{msg.valid.not.null}")
     @NotBlank(message = "{msg.valid.not.blank}")
-    @Max(value=50, message = "{msg.valid.max")
+    @Size(max=50, message = "{msg.valid.max}")
     private String ciudad;
 
     @Min(value=100, message = "{msg.valid.min}")
-    @Max(value=1000, message = "{msg.valid.max")
+    @Max(value=1000, message = "{msg.valid.max}")
     private int categoria;
 
 

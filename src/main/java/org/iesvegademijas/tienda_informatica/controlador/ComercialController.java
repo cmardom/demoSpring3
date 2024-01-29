@@ -26,9 +26,6 @@ public class ComercialController {
     @Autowired
     private ComercialService comercialService;
 
-   /* @Autowired
-    private ClienteService clienteService;*/
-
     @Autowired
     private ClienteMapper clienteMapper;
 
@@ -53,7 +50,6 @@ public class ComercialController {
         List<Integer> idsQueSalenEnLaListaDePedidos = pedidosFiltradosComercial.stream().map(Pedido::getId_cliente).collect(Collectors.toList());
 
         List<Cliente> listaCli = comercialService.listAllCli();
-        //ClienteDTO clienteTotal = new ClienteDTO();
         List<ClienteDTO> clientesConTotales = new ArrayList<>();
         List<ClienteDTO> clientesConTotalesOrdenados = new ArrayList<>();
 
@@ -97,24 +93,20 @@ public class ComercialController {
 
             List<ClienteDTO> clientesConTotales2 = new ArrayList<>();
             for (int i = 0; i < pedidosFiltradosComercial.size(); i++){
-            if (pedidosFiltradosComercial.get(i).getId_cliente() == listaCli.get(i).getId()){
-                ClienteDTO clienteConTotal = comercialService.totalPedidoCliente(pedidosFiltradosComercial.get(i).getId_cliente());
+                if (pedidosFiltradosComercial.get(i).getId_cliente() == listaCli.get(i).getId()){
+                    ClienteDTO clienteConTotal = comercialService.totalPedidoCliente(pedidosFiltradosComercial.get(i).getId_cliente());
 
-                if (!clientesConTotales2.contains(clienteConTotal)){
-                    clientesConTotales2.add(clienteConTotal);
+                    if (!clientesConTotales2.contains(clienteConTotal)){
+                        clientesConTotales2.add(clienteConTotal);
 
-                    List<ClienteDTO> clientesConTotalesOrdenados2 = clientesConTotales2.stream()
-                            .sorted(Comparator.comparingDouble(ClienteDTO::getTotalPedido))
-                            .collect(Collectors.toList());
+                        List<ClienteDTO> clientesConTotalesOrdenados2 = clientesConTotales2.stream()
+                                .sorted(Comparator.comparingDouble(ClienteDTO::getTotalPedido))
+                                .collect(Collectors.toList());
 
-                    model.addAttribute("clientesConTotalesOrdenados2", clientesConTotalesOrdenados2);
+                        model.addAttribute("clientesConTotalesOrdenados2", clientesConTotalesOrdenados2);
 
+                    }
                 }
-
-
-
-
-            }
             }
 
 
@@ -141,7 +133,8 @@ public class ComercialController {
             model.addAttribute("comercial", comercial);
             return "detalle-comercial";
         }
-        @GetMapping("/comerciales/crear")
+
+    @GetMapping("/comerciales/crear")
     public String crear(Model model){
         Comercial comercial = new Comercial();
         model.addAttribute("comercial", comercial);

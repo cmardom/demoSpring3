@@ -70,15 +70,6 @@ public class ComercialService {
     }*/
 
     public ClienteDTO totalPedidoCliente (int id_cliente){
-       /* List<Pedido> pedidos = mostrarPedidosCliente(id_cliente);
-        List<Pedido> pedidosComercial = new ArrayList<>();
-
-        for(int i = 0; i < pedidos.size(); i++){
-            pedidosComercial = mostrarPedidosComercial(pedidos.get(i).getId_comercial());
-
-
-        }*/
-
         List<Pedido> pedidosCliente = mostrarPedidosCliente(id_cliente);
         List<Pedido> pedidosComercialDeUnCliente = new ArrayList<>();
         ClienteDTO clienteDTO = new ClienteDTO();
@@ -90,26 +81,10 @@ public class ComercialService {
 
 
 
-//filter cliente
-            double resultado = pedidosComercialDeUnCliente.stream().map(Pedido::getTotal).reduce(0.0, Double::sum);
+            //filter cliente
+            double resultado = pedidosComercialDeUnCliente.stream().filter(p -> p.getId_cliente() == id_cliente).map(Pedido::getTotal).reduce(0.0, Double::sum);
             clienteDTO = clienteMapper.clienteAClienteDTO(oneCli(id_cliente));
             clienteDTO.setTotalPedido(resultado);
-
-          /*  ClienteDTO clienteDTO = new ClienteDTO(oneCli(id_cliente).getId(),
-                                                    oneCli(id_cliente).getNombre(),
-                                                    oneCli(id_cliente).getApellido1(),
-                                                    oneCli(id_cliente).getApellido2(),
-                                                    oneCli(id_cliente).getCiudad(),
-                                                    oneCli(id_cliente).getCategoria(), resultado);*/
-            //listaClientesDTO.add(clienteDTO);
-          /*  clienteDTO.setId(oneCli(id_cliente).getId());
-            clienteDTO.setNombre(oneCli(id_cliente).getNombre());
-            clienteDTO.setApellido1(oneCli(id_cliente).getApellido1());
-            clienteDTO.setApellido2(oneCli(id_cliente).getApellido2());
-            clienteDTO.setCiudad(oneCli(id_cliente).getCiudad());
-            clienteDTO.setCategoria(oneCli(id_cliente).getCategoria());
-            clienteDTO.setTotalPedido(resultado);*/
-            //break;
         }
 
         return clienteDTO;

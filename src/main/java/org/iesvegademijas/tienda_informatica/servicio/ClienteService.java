@@ -4,6 +4,7 @@ import org.iesvegademijas.tienda_informatica.dao.ClienteDAO;
 import org.iesvegademijas.tienda_informatica.dao.ComercialDAO;
 import org.iesvegademijas.tienda_informatica.dao.PedidoDAO;
 import org.iesvegademijas.tienda_informatica.dto.ClienteDTO;
+import org.iesvegademijas.tienda_informatica.mapstruct.ClienteMapper;
 import org.iesvegademijas.tienda_informatica.modelo.Cliente;
 import org.iesvegademijas.tienda_informatica.modelo.Comercial;
 import org.iesvegademijas.tienda_informatica.modelo.Pedido;
@@ -29,6 +30,9 @@ public class ClienteService {
     @Autowired
     private ComercialDAO comercialDAO;
 
+    @Autowired
+    private ClienteMapper clienteMapper;
+
 
     public List<Pedido> mostrarPedidosCliente(int id_cliente) {
         return pedidoDAO.mostrarPedidosCliente(id_cliente);
@@ -44,15 +48,11 @@ public class ClienteService {
         List <Pedido> pedidos = mostrarPedidosCliente(id_cliente);
         double resultado = pedidos.stream().map(p->p.getTotal()).reduce(0.0, Double::sum).doubleValue();
 
-        ClienteDTO clienteDTO = new ClienteDTO();
-        clienteDTO.setId(one(id_cliente).getId());
-        clienteDTO.setNombre(one(id_cliente).getNombre());
-        clienteDTO.setApellido1(one(id_cliente).getApellido1());
-        clienteDTO.setApellido2(one(id_cliente).getApellido2());
-        clienteDTO.setCiudad(one(id_cliente).getCiudad());
-        clienteDTO.setCategoria(one(id_cliente).getCategoria());
-        clienteDTO.setTotalPedido(resultado);
-        return clienteDTO;
+        //ClienteDTO clienteDTO = new ClienteDTO();
+        ClienteDTO clienteDTO2 = clienteMapper.clienteAClienteDTO(one(id_cliente));
+
+        clienteDTO2.setTotalPedido(resultado);
+        return clienteDTO2;
 
 
 
